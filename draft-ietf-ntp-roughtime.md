@@ -8,16 +8,16 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: "Internet"
+workgroup: "Network Time Protocols"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: NTP
-  type: Working Group
-  github: https://github.com/wbl/roughtime-draft/
+  group: "Network Time Protocols"
+  type: "Working Group"
+  github: "wbl/roughtime-draft"
 
 author:
  -
