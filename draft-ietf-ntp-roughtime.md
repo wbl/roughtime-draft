@@ -19,11 +19,10 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Roughtime"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-ietf-ntp-roughtime
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -36,12 +35,9 @@ keyword:
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
+  group: NTP
   type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  github: https://github.com/wbl/roughtime-draft/
 
 author:
  -
