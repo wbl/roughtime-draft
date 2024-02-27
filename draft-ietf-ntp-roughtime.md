@@ -214,6 +214,7 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
 
 
 # IANA Considerations
+
 ## Service Name and Transport Protocol Port Number Registry
    IANA is requested to allocate the following entry in the Service Name
    and Transport Protocol Port Number Registry:
@@ -231,6 +232,7 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
       Reference: [[this memo]]
 
       Port Number: [[TBD1]], selected by IANA from the User Port range
+
 ## Roughtime Version Registry
  IANA is requested to create a new registry entitled "Roughtime
    Version Registry".  Entries shall have the following fields:
