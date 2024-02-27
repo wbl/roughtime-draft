@@ -32,7 +32,7 @@ informative:
 
 --- abstract
 
-TODO Abstract
+This document specifies Roughtime - a protocol that aims to achieve rough time synchronization even for clients without any idea of what time it is.
 
 
 --- middle
