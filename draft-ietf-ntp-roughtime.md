@@ -100,24 +100,6 @@ This document has no IANA actions.
 
 --- back
 
-<reference anchor="MCBG" target="https://eprint.iacr.org/2015/1020">
-        <front>
-          <title>Attacking the Network Time Protocol</title>
-          <author initials="A." surname="Malhotra" fullname="A. Malhotra">
-            <organization/>
-          </author>
-          <author initials="I." surname="Cohen" fullname="I. Cohen">
-            <organization/>
-          </author>
-          <author initials="E." surname="Brakke" fullname="E. Brakke">
-            <organization/>
-          </author>
-          <author initials="S." surname="Goldberg" fullname="S. Goldberg">
-            <organization/>
-          </author>
-          <date year="2015"/>
-        </front>
-</reference>
 
 # Acknowledgments
 {:numbered="false"}
