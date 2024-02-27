@@ -216,7 +216,7 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
 # IANA Considerations
 ## Service Name and Transport Protocol Port Number Registry
    IANA is requested to allocate the following entry in the Service Name
-   and Transport Protocol Port Number Registry {{@RFC6335}} :
+   and Transport Protocol Port Number Registry:
 
       Service Name: Roughtime
 
