@@ -22,9 +22,12 @@ venue:
 author:
  -
     fullname: "Watson Ladd"
-    organization: Your Organization Here
+    organization: Akamai Technologies
     email: "watsonbladd@gmail.com"
-
+ -
+    fullname: "Marcus Dansarie"
+    email: marcus@dansarie.se
+ 
 normative:
 
 informative:
