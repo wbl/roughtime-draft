@@ -250,7 +250,7 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
    The initial contents of this registry shall be as follows:
      
      | Version ID            | Version name         | Reference     |
-     +---------------------- :+---------------------+--------------|
+     +---------------------- :+---------------------+---------------|
      | 0x0                   | Reserved             | [[this memo]] |
      | 0x1                   | Roughtime version 1  | [[this memo]] |
      | 0x2-0x7fffffff        | Unassigned           |               |
