@@ -117,8 +117,7 @@ This document has no IANA actions.
           </author>
           <date year="2015"/>
         </front>
-      </reference>
-    </references>
+</reference>
 
 # Acknowledgments
 {:numbered="false"}
