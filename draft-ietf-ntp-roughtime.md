@@ -95,7 +95,7 @@ A uint32 is a 32 bit unsigned integer. It is serialized with the least significa
 ### uint64
 A uint64 is a 64 bit unsigned integer. It is serialized with the least significant byte first.
 ### Tag
-Tags are used to identify values in Roughtime messages. A tag is a uint32 but may also be listed in this document as a sequence of up to four ASCII characters {{RFC0020}}. ASCII strings shorter than four characters can be unambiguously converted to tags by padding them with zero bytes. For example, the ASCII string "NONC" would correspond to the tag 0x434e4f4e and "PAD" would correspond to 0x00444150. Note that when encoded into a message the ASCII values will be in the natural bytewise order.
+Tags are used to identify values in Roughtime messages. A tag is a uint32 but may also be listed in this document as a sequence of up to four ASCII characters {{!RFC20}}. ASCII strings shorter than four characters can be unambiguously converted to tags by padding them with zero bytes. For example, the ASCII string "NONC" would correspond to the tag 0x434e4f4e and "PAD" would correspond to 0x00444150. Note that when encoded into a message the ASCII values will be in the natural bytewise order.
 ### Timestamp
 A timestamp is a uint64 count of seconds since the Unix epoch in UTC.
 ## Header
