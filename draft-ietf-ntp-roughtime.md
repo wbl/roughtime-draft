@@ -111,6 +111,7 @@ Offsets refer to the positions of the values in the message values section. All 
 
 # Protocol Details
 As described in Section 3, clients initiate time synchronization by sending requests containing a nonce to servers who send signed time responses in return. Roughtime packets can be sent between clients and servers either as UDP datagrams or via TCP streams. Servers SHOULD support the UDP transport mode, while TCP transport is OPTIONAL. A Roughtime packet MUST be formatted according to Figure 2 and as described here. The first field is a uint64 with the value 0x4d49544847554f52 ("ROUGHTIM" in ASCII). The second field is a uint32 and contains the length of the third field. The third and last field contains a Roughtime message as specified in TODO message format.
+
 !---
 0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -189,6 +190,7 @@ We assume that there is a bound PHI on the frequency error in the clock on the m
 Should this window become too large, another Roughtime measurement is called for. The definition of "too large" is implementation defined. Implementations MAY use other, more sophisticated means of adjusting the clock respecting Roughtime information. Other applications such as X.509 verification may wish to apply different rules.
 
 # Grease
+
 Servers MAY send back a fraction of responses that are syntactically invalid or contain invalid signatures as well as incorrect times. Clients MUST properly reject such responses. Servers MUST NOT send back responses with incorrect times and valid signatures. Either signature MAY be invalid for this application.
 
 # Roughtime Clients
@@ -211,7 +213,6 @@ Malfeasence reports MAY be transported by any means to the relevant vendor or se
 
 Since the only supported signature scheme, Ed25519, is not quantum resistant, the Roughtime version described in this memo will not survive the advent of quantum computers.
 Maintaining a list of trusted servers and adjudicating violations of the rules by servers is not discussed in this document and is essential for security. Roughtime clients MUST regularly update their view of which servers are trustworthy in order to benefit from the detection of misbehavior. Validating timestamps made on different dates requires knowledge of leap seconds in order to calculate time intervals correctly. Servers carry out a significant amount of computation in response to clients, and thus may experience vulnerability to denial of service attacks. This protocol does not provide any confidentiality. Given the nature of timestamps such impact is minor. The compromise of a PUBK's private key, even past MAXT, is a problem as the private key can be used to sign invalid times that are in the range MINT to MAXT, and thus violate the good behavior guarantee of the server. Servers MUST NOT send response packets larger than the request packets sent by clients, in order to prevent amplification attacks.
-
 
 # IANA Considerations
 
@@ -261,7 +262,6 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
 This protocol is designed to obscure all client identifiers. Servers necessarily have persistent long-term identities essential to enforcing correct behavior. Generating nonces in a nonrandom manner can cause leaks of private data or enable tracking of clients as they move between networks.
 
 --- back
-
 
 # Acknowledgments
 {:numbered="false"}
