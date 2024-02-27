@@ -42,7 +42,7 @@ This document specifies Roughtime - a protocol that aims to achieve rough time s
 
 # Introduction
 
-Time synchronization is essential to Internet security as many security protocols and other applications require synchronization [@RFC7384] [@MCBG]. Unfortunately widely deployed protocols such as the Network Time Protocol (NTP) [RFC5905] lack essential security features, and even newer protocols like Network Time Security (NTS) [@RFC8915] lack mechanisms to ensure that the servers behave correctly. Furthermore clients may lack even a basic idea of the time, creating bootstrapping problems. Roughtime uses a list of keys and servers to resolve this issue.
+Time synchronization is essential to Internet security as many security protocols and other applications require synchronization {{?RFC738}} [@MCBG]. Unfortunately widely deployed protocols such as the Network Time Protocol (NTP) {{?RFC5905}} lack essential security features, and even newer protocols like Network Time Security (NTS) {{?RFC8915}} lack mechanisms to ensure that the servers behave correctly. Furthermore clients may lack even a basic idea of the time, creating bootstrapping problems. Roughtime uses a list of keys and servers to resolve this issue.
 
 
 # Conventions and Definitions
