@@ -3,9 +3,9 @@
 
 
 Network Time Protocols                                           W. Ladd
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                          27 February 2024
-Expires: 30 August 2024
+Internet-Draft                                       Akamai Technologies
+Intended status: Informational                               M. Dansarie
+Expires: 30 August 2024                                 27 February 2024
 
 
                                Roughtime
@@ -66,7 +66,7 @@ Table of Contents
    4.  IANA Considerations
    5.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -103,8 +103,12 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Watson Ladd
-   Your Organization Here
+   Akamai Technologies
    Email: watsonbladd@gmail.com
+
+
+   Marcus Dansarie
+   Email: marcus@dansarie.se
