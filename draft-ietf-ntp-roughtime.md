@@ -87,6 +87,7 @@ Messages MAY be recursive, i.e. the value of a tag can itself be a Roughtime mes
 |                                                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 !---
+
 ## Data types
 
 ### int32
@@ -128,7 +129,7 @@ As described in Section 3, clients initiate time synchronization by sending requ
 
 !---
 
-Roughtime request and response packets MUST be transmitted in a single datagram when the UDP transport mode is used. Setting the packet's don't fragment bit {{RFC791}} is OPTIONAL in IPv4 networks. Multiple requests and responses can be exchanged over an established TCP connection. Clients MAY send multiple requests at once and servers MAY send responses out of order. The connection SHOULD be closed by the client when it has no more requests to send and has received all expected responses. Either side SHOULD close the connection in response to synchronization, format, implementation-defined timeouts, or other errors. All requests and responses MUST contain the VER tag. It contains a list of one or more uint32 version numbers. The version of Roughtime specified by this memo has version number 1. NOTE TO RFC EDITOR: remove this paragraph before publication. For testing drafts of this memo, a version number of 0x80000000 plus the draft number is used.
+Roughtime request and response packets MUST be transmitted in a single datagram when the UDP transport mode is used. Setting the packet's don't fragment bit {{!RFC791}} is OPTIONAL in IPv4 networks. Multiple requests and responses can be exchanged over an established TCP connection. Clients MAY send multiple requests at once and servers MAY send responses out of order. The connection SHOULD be closed by the client when it has no more requests to send and has received all expected responses. Either side SHOULD close the connection in response to synchronization, format, implementation-defined timeouts, or other errors. All requests and responses MUST contain the VER tag. It contains a list of one or more uint32 version numbers. The version of Roughtime specified by this memo has version number 1. NOTE TO RFC EDITOR: remove this paragraph before publication. For testing drafts of this memo, a version number of 0x80000000 plus the draft number is used.
 
 ## Requests
  A request MUST contain the tags VER and NONC. Tags other than NONC and VER SHOULD be ignored by the server. A future version of this protocol may mandate additional tags in the message and asign them semantic meaning. The size of the request message SHOULD be at least 1024 bytes when the UDP transport mode is used. To attain this size the ZZZZ tag SHOULD be added to the message. Its value SHOULD be all zeros. Responding to requests shorter than 1024 bytes is OPTIONAL and servers MUST NOT send responses larger than the requests they are replying to.
@@ -143,7 +144,7 @@ The value of the NONC tag is a 32 byte nonce. It SHOULD be generated in a manner
  A response MUST contain the tags SIG, VER, NONC, PATH, SREP, CERT, and INDX.
  
 ### SIG
- In general, a SIG tag value is a 64 byte Ed25519 signature {{RFC8032}} over a concatenation of a signature context ASCII string and the entire value of a tag. All context strings MUST include a terminating zero byte. The SIG tag in the root of a response MUST be a signature over the SREP value using the public key contained in CERT. The context string MUST be "RoughTime v1 response signature".
+ In general, a SIG tag value is a 64 byte Ed25519 signature {{!RFC8032}} over a concatenation of a signature context ASCII string and the entire value of a tag. All context strings MUST include a terminating zero byte. The SIG tag in the root of a response MUST be a signature over the SREP value using the public key contained in CERT. The context string MUST be "RoughTime v1 response signature".
  
 ### VER
 In a response, the VER tag MUST contain a single version number. It SHOULD be one of the version numbers supplied by the client in its request. The server MUST ensure that the version number corresponds with the rest of the packet contents.
@@ -215,7 +216,7 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
 # IANA Considerations
 ## Service Name and Transport Protocol Port Number Registry
    IANA is requested to allocate the following entry in the Service Name
-   and Transport Protocol Port Number Registry {{@RFC6335}}:
+   and Transport Protocol Port Number Registry {{@RFC6335}} :
 
       Service Name: Roughtime
 
