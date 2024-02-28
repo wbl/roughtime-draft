@@ -134,7 +134,7 @@ Roughtime request and response packets MUST be transmitted in a single datagram 
 
 ## Requests
  A request MUST contain the tags VER and NONC. Tags other than NONC and VER SHOULD be ignored by the server. A future version of this protocol may mandate additional tags in the message and asign them semantic meaning. The size of the request message SHOULD be at least 1024 bytes when the UDP transport mode is used. To attain this size the ZZZZ tag SHOULD be added to the message. Its value SHOULD be all zeros. Responding to requests shorter than 1024 bytes is OPTIONAL and servers MUST NOT send responses larger than the requests they are replying to.
- 
+
 ### VER
 In a request, the VER tag contains a list of versions. The VER tag MUST include at least one Roughtime version supported by the client. The client MUST ensure that the version numbers and tags included in the request are not incompatible with each other or the packet contents.
 
@@ -143,10 +143,10 @@ The value of the NONC tag is a 32 byte nonce. It SHOULD be generated in a manner
 
 ## Responses
  A response MUST contain the tags SIG, VER, NONC, PATH, SREP, CERT, and INDX.
- 
+
 ### SIG
  In general, a SIG tag value is a 64 byte Ed25519 signature {{!RFC8032}} over a concatenation of a signature context ASCII string and the entire value of a tag. All context strings MUST include a terminating zero byte. The SIG tag in the root of a response MUST be a signature over the SREP value using the public key contained in CERT. The context string MUST be "RoughTime v1 response signature".
- 
+
 ### VER
 In a response, the VER tag MUST contain a single version number. It SHOULD be one of the version numbers supplied by the client in its request. The server MUST ensure that the version number corresponds with the rest of the packet contents.
 
@@ -170,7 +170,7 @@ A Merkle tree is a binary tree where the value of each non-leaf node is a hash v
 
 ### Root Value Validity Check Algorithm
  We describe how to compute the hash of the Merkel tree from the values in the tags PATH, INDX, and NONC. Our algorithm maintains a current hash value. The bits of INDX are ordered from least to most significant in this algorithm. At initialization hash is set to H(0x00 || nonce). If no more entries remain in PATH the current hash is the hash of the Merkel tree. All remaining bits of INDX must be zero. Otherwise let node be the next 32 bytes in PATH. If the current bit in INDX is 0 then hash = H(0x01 || node || hash), else hash = H(0x01 || hash || node).
- 
+
 ## Validity of Response
 A client MUST check the following properties when it receives a response. We assume the long-term server public key is known to the client through other means.
 
@@ -249,7 +249,7 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
    The policy for allocation of new entries SHOULD be: IETF Review.
 
    The initial contents of this registry shall be as follows:
-     
+
      | Version ID            | Version name         | Reference     |
      +---------------------- :+---------------------+---------------|
      | 0x0                   | Reserved             | [[this memo]] |
