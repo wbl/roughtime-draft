@@ -127,7 +127,6 @@ As described in Section 3, clients initiate time synchronization by sending requ
 .                                                               .
 |                                                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
 !---
 
 Roughtime request and response packets MUST be transmitted in a single datagram when the UDP transport mode is used. Setting the packet's don't fragment bit {{!RFC791}} is OPTIONAL in IPv4 networks. Multiple requests and responses can be exchanged over an established TCP connection. Clients MAY send multiple requests at once and servers MAY send responses out of order. The connection SHOULD be closed by the client when it has no more requests to send and has received all expected responses. Either side SHOULD close the connection in response to synchronization, format, implementation-defined timeouts, or other errors. All requests and responses MUST contain the VER tag. It contains a list of one or more uint32 version numbers. The version of Roughtime specified by this memo has version number 1. NOTE TO RFC EDITOR: remove this paragraph before publication. For testing drafts of this memo, a version number of 0x80000000 plus the draft number is used.
@@ -256,8 +255,59 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
      | 0x1                   | Roughtime version 1  | [[this memo]] |
      | 0x2-0x7fffffff        | Unassigned           |               |
      | 0x80000000-0xffffffff | Reserved for Private | [[this memo]] |
-     |                       | or Experimental use  |               |
-
+     |                       | or Experimental use  |                |
+    
+## Roughtime Tag Registry	 		
+		 		
+	   IANA is requested to create a new registry entitled "Roughtime Tag	 		
+	   Registry".  Entries SHALL have the following fields:	 		
+		 		
+	      Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.	 		
+		 		
+	      ASCII Representation (OPTIONAL): The ASCII representation of the	 		
+	      tag in accordance with Section 5.1.4 of this memo, if applicable.	 		
+		 		
+	      Reference (REQUIRED): A reference to a relevant specification	 		
+	      document.	 		
+		 		
+	   The policy for allocation of new entries in this registry SHOULD be:	 		
+	   Specification Required.	 		
+		 		
+	   The initial contents of this registry SHALL be as follows:	 		
+		 		
+	           +============+======================+===============+	 		
+	           | Tag        | ASCII Representation | Reference     |	 		
+	           +============+======================+===============+	 		
+	           | 0x7a7a7a7a | ZZZZ                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x00474953 | SIG                  | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x00524556 | VER                  | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x434e4f4e | NONC                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x454c4544 | DELE                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x48544150 | PATH                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x49444152 | RADI                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x4b425550 | PUBK                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x5044494d | MIDP                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x50455253 | SREP                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x544e494d | MINT                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x544f4f52 | ROOT                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x54524543 | CERT                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x5458414d | MAXT                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+	 		
+	           | 0x58444e49 | INDX                 | [[this memo]] |	 		
+	           +------------+----------------------+---------------+
 # Privacy Considerations
 This protocol is designed to obscure all client identifiers. Servers necessarily have persistent long-term identities essential to enforcing correct behavior. Generating nonces in a nonrandom manner can cause leaks of private data or enable tracking of clients as they move between networks.
 
