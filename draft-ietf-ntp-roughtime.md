@@ -256,7 +256,7 @@ Maintaining a list of trusted servers and adjudicating violations of the rules b
      | 0x2-0x7fffffff        | Unassigned           |               |
      | 0x80000000-0xffffffff | Reserved for Private | [[this memo]] |
      |                       | or Experimental use  |                |
-    
+
 ## Roughtime Tag Registry	 		
 		 		
 	   IANA is requested to create a new registry entitled "Roughtime Tag	 		
