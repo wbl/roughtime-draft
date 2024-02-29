@@ -5,7 +5,7 @@
 Network Time Protocols                                           W. Ladd
 Internet-Draft                                       Akamai Technologies
 Intended status: Informational                               M. Dansarie
-Expires: 31 August 2024                                 28 February 2024
+Expires: 1 September 2024                               29 February 2024
 
 
                                Roughtime
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 August 2024.
+   This Internet-Draft will expire on 1 September 2024.
 
 Copyright Notice
 
@@ -97,10 +97,10 @@ Table of Contents
    11. IANA Considerations
      11.1.  Service Name and Transport Protocol Port Number Registry
      11.2.  Roughtime Version Registry
-   12. Privacy Considerations
-   13. References
-     13.1.  Normative References
-     13.2.  Informative References
+     11.3.  Roughtime Tag Registry
+   12. References
+     12.1.  Normative References
+     12.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -261,7 +261,6 @@ Table of Contents
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | |
    .  . .  Roughtime message . .  . | |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
    !---
 
    Roughtime request and response packets MUST be transmitted in a
@@ -560,19 +559,63 @@ Table of Contents
     | 0x1                   | Roughtime version 1  | [[this memo]] |
     | 0x2-0x7fffffff        | Unassigned           |               |
     | 0x80000000-0xffffffff | Reserved for Private | [[this memo]] |
-    |                       | or Experimental use  |               |
+    |                       | or Experimental use  |                |
 
-12.  Privacy Considerations
+11.3.  Roughtime Tag Registry
 
-   This protocol is designed to obscure all client identifiers.  Servers
-   necessarily have persistent long-term identities essential to
-   enforcing correct behavior.  Generating nonces in a nonrandom manner
-   can cause leaks of private data or enable tracking of clients as they
-   move between networks.
+       IANA is requested to create a new registry entitled "Roughtime Tag
+       Registry".  Entries SHALL have the following fields:
 
-13.  References
+          Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.
 
-13.1.  Normative References
+          ASCII Representation (OPTIONAL): The ASCII representation of the
+          tag in accordance with Section 5.1.4 of this memo, if applicable.
+
+          Reference (REQUIRED): A reference to a relevant specification
+          document.
+
+       The policy for allocation of new entries in this registry SHOULD be:
+       Specification Required.
+
+       The initial contents of this registry SHALL be as follows:
+
+               +============+======================+===============+
+               | Tag        | ASCII Representation | Reference     |
+               +============+======================+===============+
+               | 0x7a7a7a7a | ZZZZ                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x00474953 | SIG                  | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x00524556 | VER                  | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x434e4f4e | NONC                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x454c4544 | DELE                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x48544150 | PATH                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x49444152 | RADI                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x4b425550 | PUBK                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x5044494d | MIDP                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x50455253 | SREP                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x544e494d | MINT                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x544f4f52 | ROOT                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x54524543 | CERT                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x5458414d | MAXT                 | [[this memo]] |
+               +------------+----------------------+---------------+
+               | 0x58444e49 | INDX                 | [[this memo]] |
+               +------------+----------------------+---------------+ # Privacy Considerations This protocol is designed to obscure all client identifiers. Servers necessarily have persistent long-term identities essential to enforcing correct behavior. Generating nonces in a nonrandom manner can cause leaks of private data or enable tracking of clients as they move between networks.
+
+12.  References
+
+12.1.  Normative References
 
    [RFC20]    Cerf, V., "ASCII format for network interchange", STD 80,
               RFC 20, DOI 10.17487/RFC0020, October 1969,
@@ -601,7 +644,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-13.2.  Informative References
+12.2.  Informative References
 
    [RFC5905]  Mills, D., Martin, J., Ed., Burbank, J., and W. Kasch,
               "Network Time Protocol Version 4: Protocol and Algorithms
