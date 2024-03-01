@@ -59,39 +59,40 @@ servers to resolve this issue.
 
 {::boilerplate bcp14-tagged}
 
-# Protocol Overview Roughtime is a protocol for rough time
-synchronization that enables clients to provide cryptographic proof of
-server malfeasance. It does so by having responses from servers
-include a signature over a value derived from a nonce in the client
-request. This provides cryptographic proof that the timestamp was
-issued after the server received the client's request. The derived
-value included in the server's response is the root of a Merkle tree
-which includes the hash of the client's nonce as the value of one of
-its leaf nodes. This enables the server to amortize the relatively
-costly signing operation over a number of client requests. Single
-server mode: At its most basic level, Roughtime is a one round
-protocol in which a completely fresh client requests the current time
-and the server sends a signed response. The response includes a
-timestamp and a radius used to indicate the server's certainty about
-the reported time. For example, a radius of 1,000,000 microseconds
-means the server is absolutely confident that the true time is within
-one second of the reported time. The server proves freshness of its
-response as follows. The client's request contains a nonce which the
-server incorporates into its signed response. The client can verify
-the server's signatures and - provided that the nonce has sufficient
-entropy - this proves that the signed response could only have been
-generated after the nonce.
+# Protocol Overview
+
+Roughtime is a protocol for rough time synchronization that enables
+clients to provide cryptographic proof of server malfeasance. It does
+so by having responses from servers include a signature over a value
+derived from a nonce in the client request. This provides
+cryptographic proof that the timestamp was issued after the server
+received the client's request. The derived value included in the
+server's response is the root of a Merkle tree which includes the hash
+of the client's nonce as the value of one of its leaf nodes. This
+enables the server to amortize the relatively costly signing operation
+over a number of client requests. Single server mode: At its most
+basic level, Roughtime is a one round protocol in which a completely
+fresh client requests the current time and the server sends a signed
+response. The response includes a timestamp and a radius used to
+indicate the server's certainty about the reported time. For example,
+a radius of 1,000,000 microseconds means the server is absolutely
+confident that the true time is within one second of the reported
+time. The server proves freshness of its response as follows. The
+client's request contains a nonce which the server incorporates into
+its signed response. The client can verify the server's signatures and
+- provided that the nonce has sufficient entropy - this proves that
+the signed response could only have been generated after the nonce.
 
 # The Guarantee
 
- A Roughtime server guarantees that a response to a query sent at t1,
- received at t2, and with timestamp t3 has been created between the
- transmission of the query and its reception. If t3 is not within that
- interval, a server inconsistency may be detected and used to impeach
- the server. The propagation of such a guarantee and its use of type
- synchronization is discussed in (#integration-into-ntp). No delay
- attacker may affect this: they may only expand the interval between
- t1 and t2, or of course stop the measurement in the first place.
+A Roughtime server guarantees that a response to a query sent at t1,
+received at t2, and with timestamp t3 has been created between the
+transmission of the query and its reception. If t3 is not within that
+interval, a server inconsistency may be detected and used to impeach
+the server. The propagation of such a guarantee and its use of type
+synchronization is discussed in {{integration-into-ntp}}. No delay
+attacker may affect this: they may only expand the interval between
+t1 and t2, or of course stop the measurement in the first place.
 
 # Message Format {#message-format}
 
@@ -233,15 +234,15 @@ number is used.
 
 ## Requests
 
- A request MUST contain the tags VER and NONC. Tags other than NONC
- and VER SHOULD be ignored by the server. A future version of this
- protocol may mandate additional tags in the message and asign them
- semantic meaning. The size of the request message SHOULD be at least
- 1024 bytes when the UDP transport mode is used. To attain this size
- the ZZZZ tag SHOULD be added to the message. Its value SHOULD be all
- zeros. Responding to requests shorter than 1024 bytes is OPTIONAL and
- servers MUST NOT send responses larger than the requests they are
- replying to.
+A request MUST contain the tags VER and NONC. Tags other than NONC
+and VER SHOULD be ignored by the server. A future version of this
+protocol may mandate additional tags in the message and asign them
+semantic meaning. The size of the request message SHOULD be at least
+1024 bytes when the UDP transport mode is used. To attain this size
+the ZZZZ tag SHOULD be added to the message. Its value SHOULD be all
+zeros. Responding to requests shorter than 1024 bytes is OPTIONAL and
+servers MUST NOT send responses larger than the requests they are
+replying to.
 
 ### VER
 
@@ -351,15 +352,15 @@ are stored is described in the next section.
 
 ### Root Value Validity Check Algorithm
 
- We describe how to compute the hash of the Merkel tree from the
- values in the tags PATH, INDX, and NONC. Our algorithm maintains a
- current hash value. The bits of INDX are ordered from least to most
- significant in this algorithm. At initialization hash is set to
- H(0x00 || nonce). If no more entries remain in PATH the current hash
- is the hash of the Merkel tree. All remaining bits of INDX must be
- zero. Otherwise let node be the next 32 bytes in PATH. If the current
- bit in INDX is 0 then hash = H(0x01 || node || hash), else hash =
- H(0x01 || hash || node).
+We describe how to compute the root hash of the Merkel tree from the
+values in the tags PATH, INDX, and NONC. Our algorithm maintains a
+current hash value. The bits of INDX are ordered from least to most
+significant in this algorithm. At initialization hash is set to
+H(0x00 || nonce). If no more entries remain in PATH the current hash
+is the hash of the Merkel tree. All remaining bits of INDX must be
+zero. Otherwise let node be the next 32 bytes in PATH. If the current
+bit in INDX is 0 then hash = H(0x01 || node || hash), else hash =
+H(0x01 || hash || node).
 
 ## Validity of Response
 
@@ -470,8 +471,8 @@ amplification attacks.
 
 ## Service Name and Transport Protocol Port Number Registry
 
-   IANA is requested to allocate the following entry in the Service
-   Name and Transport Protocol Port Number Registry:
+IANA is requested to allocate the following entry in the Service
+Name and Transport Protocol Port Number Registry:
 
       Service Name: Roughtime
 
@@ -500,69 +501,69 @@ amplification attacks.
       Reference (REQUIRED): A reference to a relevant specification
       document.
 
-   The policy for allocation of new entries SHOULD be: IETF Review.
+The policy for allocation of new entries SHOULD be: IETF Review.
 
-   The initial contents of this registry shall be as follows:
+The initial contents of this registry shall be as follows:
 
-     | Version ID            | Version name         | Reference     |
-     +---------------------- :+---------------------+---------------|
-     | 0x0                   | Reserved             | [[this memo]] |
-     | 0x1                   | Roughtime version 1  | [[this memo]] |
-     | 0x2-0x7fffffff        | Unassigned           |               |
-     | 0x80000000-0xffffffff | Reserved for Private | [[this memo]] |
-     |                       | or Experimental use  |                |
+| Version ID            | Version name         | Reference     |
++---------------------- :+---------------------+---------------|
+| 0x0                   | Reserved             | [[this memo]] |
+| 0x1                   | Roughtime version 1  | [[this memo]] |
+| 0x2-0x7fffffff        | Unassigned           |               |
+| 0x80000000-0xffffffff | Reserved for Private | [[this memo]] |
+|                       | or Experimental use  |               |
 
 ## Roughtime Tag Registry	 		
 
-IANA is requested to create a new registry entitled "Roughtime Tag	 		
-Registry".  Entries SHALL have the following fields:	 		
+IANA is requested to create a new registry entitled "Roughtime Tag
+Registry".  Entries SHALL have the following fields:
+
+	      Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.
+
+	      ASCII Representation (OPTIONAL): The ASCII representation of the
+	      tag in accordance with Section 5.1.4 of this memo, if applicable.
+
+	      Reference (REQUIRED): A reference to a relevant specification
+	      document.
+
+The policy for allocation of new entries in this registry SHOULD be:
+Specification Required.
 		 		
-	      Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.	 		
+The initial contents of this registry SHALL be as follows:
 		 		
-	      ASCII Representation (OPTIONAL): The ASCII representation of the	 		
-	      tag in accordance with Section 5.1.4 of this memo, if applicable.	 		
-		 		
-	      Reference (REQUIRED): A reference to a relevant specification	 		
-	      document.	 		
-		 		
-	   The policy for allocation of new entries in this registry SHOULD be:	 		
-	   Specification Required.	 		
-		 		
-	   The initial contents of this registry SHALL be as follows:	 		
-		 		
-	           +============+======================+===============+	 		
-	           | Tag        | ASCII Representation | Reference     |	 		
-	           +============+======================+===============+	 		
-	           | 0x7a7a7a7a | ZZZZ                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x00474953 | SIG                  | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x00524556 | VER                  | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x434e4f4e | NONC                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x454c4544 | DELE                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x48544150 | PATH                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x49444152 | RADI                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x4b425550 | PUBK                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x5044494d | MIDP                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x50455253 | SREP                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x544e494d | MINT                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x544f4f52 | ROOT                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x54524543 | CERT                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x5458414d | MAXT                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+	 		
-	           | 0x58444e49 | INDX                 | [[this memo]] |	 		
-	           +------------+----------------------+---------------+
++============+======================+===============+
+| Tag | ASCII Representation | Reference |
++============+======================+===============+
+| 0x7a7a7a7a | ZZZZ                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x00474953 | SIG                  | [[this memo]] |
++------------+----------------------+---------------+
+| 0x00524556 | VER                  | [[this memo]] |
++------------+----------------------+---------------+
+| 0x434e4f4e | NONC                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x454c4544 | DELE                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x48544150 | PATH                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x49444152 | RADI                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x4b425550 | PUBK                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x5044494d | MIDP                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x50455253 | SREP                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x544e494d | MINT                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x544f4f52 | ROOT                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x54524543 | CERT                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x5458414d | MAXT                 | [[this memo]] |
++------------+----------------------+---------------+
+| 0x58444e49 | INDX                 | [[this memo]] |
++------------+----------------------+---------------+
 
 # Privacy Considerations
 
