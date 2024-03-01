@@ -5,7 +5,7 @@
 Network Time Protocols                                           W. Ladd
 Internet-Draft                                       Akamai Technologies
 Intended status: Informational                               M. Dansarie
-Expires: 1 September 2024                               29 February 2024
+Expires: 2 September 2024                                   1 March 2024
 
 
                                Roughtime
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 September 2024.
+   This Internet-Draft will expire on 2 September 2024.
 
 Copyright Notice
 
@@ -62,8 +62,8 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Protocol Overview
-   4.  The Guarrentee
+   3.  Protocol Overview Roughtime is a protocol for rough time
+   4.  The Guarantee
    5.  Message Format
      5.1.  Data types
        5.1.1.  int32
@@ -98,9 +98,10 @@ Table of Contents
      11.1.  Service Name and Transport Protocol Port Number Registry
      11.2.  Roughtime Version Registry
      11.3.  Roughtime Tag Registry
-   12. References
-     12.1.  Normative References
-     12.2.  Informative References
+   12. Privacy Considerations
+   13. References
+     13.1.  Normative References
+     13.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -124,32 +125,31 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Protocol Overview
+3.  Protocol Overview Roughtime is a protocol for rough time
 
-   Roughtime is a protocol for rough time synchronization that enables
-   clients to provide cryptographic proof of server malfeasance.  It
-   does so by having responses from servers include a signature over a
-   value derived from a nonce in the client request.  This provides
-   cryptographic proof that the timestamp was issued after the server
-   received the client's request.  The derived value included in the
-   server's response is the root of a Merkle tree which includes the
-   hash of the client's nonce as the value of one of its leaf nodes.
-   This enables the server to amortize the relatively costly signing
-   operation over a number of client requests.  Single server mode: At
-   its most basic level, Roughtime is a one round protocol in which a
-   completely fresh client requests the current time and the server
-   sends a signed response.  The response includes a timestamp and a
-   radius used to indicate the server's certainty about the reported
-   time.  For example, a radius of 1,000,000 microseconds means the
-   server is absolutely confident that the true time is within one
-   second of the reported time.  The server proves freshness of its
+   synchronization that enables clients to provide cryptographic proof
+   of server malfeasance.  It does so by having responses from servers
+   include a signature over a value derived from a nonce in the client
+   request.  This provides cryptographic proof that the timestamp was
+   issued after the server received the client's request.  The derived
+   value included in the server's response is the root of a Merkle tree
+   which includes the hash of the client's nonce as the value of one of
+   its leaf nodes.  This enables the server to amortize the relatively
+   costly signing operation over a number of client requests.  Single
+   server mode: At its most basic level, Roughtime is a one round
+   protocol in which a completely fresh client requests the current time
+   and the server sends a signed response.  The response includes a
+   timestamp and a radius used to indicate the server's certainty about
+   the reported time.  For example, a radius of 1,000,000 microseconds
+   means the server is absolutely confident that the true time is within
+   one second of the reported time.  The server proves freshness of its
    response as follows.  The client's request contains a nonce which the
    server incorporates into its signed response.  The client can verify
    the server's signatures and - provided that the nonce has sufficient
    entropy - this proves that the signed response could only have been
    generated after the nonce.
 
-4.  The Guarrentee
+4.  The Guarantee
 
    A Roughtime server guarantees that a response to a query sent at t1,
    received at t2, and with timestamp t3 has been created between the
@@ -563,8 +563,8 @@ Table of Contents
 
 11.3.  Roughtime Tag Registry
 
-       IANA is requested to create a new registry entitled "Roughtime Tag
-       Registry".  Entries SHALL have the following fields:
+   IANA is requested to create a new registry entitled "Roughtime Tag
+   Registry".  Entries SHALL have the following fields:
 
           Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.
 
@@ -611,11 +611,19 @@ Table of Contents
                | 0x5458414d | MAXT                 | [[this memo]] |
                +------------+----------------------+---------------+
                | 0x58444e49 | INDX                 | [[this memo]] |
-               +------------+----------------------+---------------+ # Privacy Considerations This protocol is designed to obscure all client identifiers. Servers necessarily have persistent long-term identities essential to enforcing correct behavior. Generating nonces in a nonrandom manner can cause leaks of private data or enable tracking of clients as they move between networks.
+               +------------+----------------------+---------------+
 
-12.  References
+12.  Privacy Considerations
 
-12.1.  Normative References
+   This protocol is designed to obscure all client identifiers.  Servers
+   necessarily have persistent long-term identities essential to
+   enforcing correct behavior.  Generating nonces in a nonrandom manner
+   can cause leaks of private data or enable tracking of clients as they
+   move between networks.
+
+13.  References
+
+13.1.  Normative References
 
    [RFC20]    Cerf, V., "ASCII format for network interchange", STD 80,
               RFC 20, DOI 10.17487/RFC0020, October 1969,
@@ -644,7 +652,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-12.2.  Informative References
+13.2.  Informative References
 
    [RFC5905]  Mills, D., Martin, J., Ed., Burbank, J., and W. Kasch,
               "Network Time Protocol Version 4: Protocol and Algorithms
