@@ -105,7 +105,7 @@ described in the following sections.
 Messages MAY be recursive, i.e. the value of a tag can itself be a
 Roughtime message.
 
-!---
+~~~~~~~~~~~~~~~~
 0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -129,7 +129,8 @@ Roughtime message.
 .                                                               .
 |                                                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-!---
+~~~~~~~~~~~~~
+{: #figops title="Roughtime Message"}
 
 ## Data types
 
@@ -194,9 +195,9 @@ Roughtime packet MUST be formatted according to Figure 2 and as
 described here. The first field is a uint64 with the value
 0x4d49544847554f52 ("ROUGHTIM" in ASCII). The second field is a uint32
 and contains the length of the third field. The third and last field
-contains a Roughtime message as specified in TODO message format.
+contains a Roughtime message as specified in {{message-format}}.
 
-!---
+~~~~~~~~~~~~~~~
 0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -211,7 +212,8 @@ contains a Roughtime message as specified in TODO message format.
 .                                                               .
 |                                                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-!---
+~~~~~~~~~~~~~~
+{: #figops title="Roughtime packet}
 
 Roughtime request and response packets MUST be transmitted in a single
 datagram when the UDP transport mode is used. Setting the packet's
