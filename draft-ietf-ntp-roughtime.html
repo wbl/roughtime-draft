@@ -1291,7 +1291,7 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-1-1">Time synchronization is essential to Internet security as many
 security protocols and other applications require synchronization
-<span>[<a href="#RFC738" class="cite xref">RFC738</a>]</span> [@MCBG]. Unfortunately widely deployed protocols such as
+<span>[<a href="#RFC738" class="cite xref">RFC738</a>]</span>. Unfortunately widely deployed protocols such as
 the Network Time Protocol (NTP) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span> lack essential security
 features, and even newer protocols like Network Time Security (NTS)
 <span>[<a href="#RFC8915" class="cite xref">RFC8915</a>]</span> lack mechanisms to ensure that the servers behave
@@ -1467,8 +1467,8 @@ bytewise order.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-5.2-1">All Roughtime messages start with a header. The first four bytes of
 the header is the uint32 number of tags N, and hence of (tag, value)
-pairs. The following 4<em>(N-1) bytes are offsets, each a uint32. The
-last 4</em>N bytes in the header are tags.  Offsets refer to the positions
+pairs. The following 4*(N-1) bytes are offsets, each a uint32. The
+last 4*N bytes in the header are tags.  Offsets refer to the positions
 of the values in the message values section. All offsets <span class="bcp14">MUST</span> be
 multiples of four and placed in increasing order. The first
 post-header byte is at offset 0. The offset array is considered to
@@ -1498,7 +1498,7 @@ described here. The first field is a uint64 with the value
 0x4d49544847554f52 ("ROUGHTIM" in ASCII). The second field is a uint32
 and contains the length of the third field. The third and last field
 contains a Roughtime message as specified in <a href="#message-format" class="auto internal xref">Section 5</a>.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<div id="figpack">
+<span id="name-roughtime-packet"></span><div id="figpack">
 <figure id="figure-2">
         <div class="alignLeft art-text artwork" id="section-6-2.1">
 <pre>
@@ -1518,7 +1518,9 @@ contains a Roughtime message as specified in <a href="#message-format" class="au
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 </div>
-<figcaption><a href="#figure-2" class="selfRef">Figure 2</a></figcaption></figure>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-roughtime-packet" class="selfRef">Roughtime packet</a>
+        </figcaption></figure>
 </div>
 <p id="section-6-3">Roughtime request and response packets <span class="bcp14">MUST</span> be transmitted in a single
 datagram when the UDP transport mode is used. Setting the packet's
@@ -1687,18 +1689,18 @@ Merkle tree represents the nonce in one request. Leaf nodes are
 indexed left to right, beginning with zero. The values of all nodes
 are calculated from the leaf nodes and up towards the root node using
 the first 32 bytes of the output of the SHA-512 hash algorithm
-[SHS]. For leaf nodes, the byte 0x00 is prepended to the nonce before
-applying the hash function. For all other nodes, the byte 0x01 is
-concatenated with first the left and then the right child node value
-before applying the hash function. The value of the Merkle tree's root
-node is included in the ROOT tag of the response. The index of a
-request's nonce node is included in the INDX tag of the response. The
-values of all sibling nodes in the path between a request's nonce node
-and the root node is stored in the PATH tag so that the client can
-reconstruct and validate the value in the ROOT tag using its
-nonce. These values are each 32 bytes and are stored one after the
-other with no additional padding or structure. The order in which they
-are stored is described in the next section.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span>. For leaf nodes, the byte 0x00 is prepended to the nonce
+before applying the hash function. For all other nodes, the byte 0x01
+is concatenated with first the left and then the right child node
+value before applying the hash function. The value of the Merkle
+tree's root node is included in the ROOT tag of the response. The
+index of a request's nonce node is included in the INDX tag of the
+response. The values of all sibling nodes in the path between a
+request's nonce node and the root node is stored in the PATH tag so
+that the client can reconstruct and validate the value in the ROOT tag
+using its nonce. These values are each 32 bytes and are stored one
+after the other with no additional padding or structure. The order in
+which they are stored is described in the next section.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
 <div id="root-value-validity-check-algorithm">
 <section id="section-6.3.1">
           <h4 id="name-root-value-validity-check-a">
@@ -1796,7 +1798,7 @@ failure report as described below.<a href="#section-9.1-1" class="pilcrow">¶</a
 <a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-measurement-sequence" class="section-name selfRef">Measurement sequence</a>
         </h3>
 <p id="section-9.2-1">The client randomly permutes three servers from the list, and
-seqeuntially queries them. The first probe uses a NONC that is
+sequentially queries them. The first probe uses a NONC that is
 randomly generated. The second query uses H(resp||rand) where rand is
 a random 32 byte value and resp is the entire response to the first
 probe. The third query uses H(resp||rand) for a different 32 byte
@@ -2087,6 +2089,10 @@ move between networks.<a href="#section-12-1" class="pilcrow">¶</a></p>
 <dt id="RFC4086">[RFC4086]</dt>
         <dd>
 <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Schiller, J.</span>, and <span class="refAuthor">S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4086">https://www.rfc-editor.org/rfc/rfc4086</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6234">[RFC6234]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6234">https://www.rfc-editor.org/rfc/rfc6234</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC791">[RFC791]</dt>
         <dd>
