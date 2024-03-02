@@ -337,7 +337,7 @@ Merkle tree represents the nonce in one request. Leaf nodes are
 indexed left to right, beginning with zero. The values of all nodes
 are calculated from the leaf nodes and up towards the root node using
 the first 32 bytes of the output of the SHA-512 hash algorithm
-{{RFC6234}}. For leaf nodes, the byte 0x00 is prepended to the nonce
+{{!RFC6234}}. For leaf nodes, the byte 0x00 is prepended to the nonce
 before applying the hash function. For all other nodes, the byte 0x01
 is concatenated with first the left and then the right child node
 value before applying the hash function. The value of the Merkle
