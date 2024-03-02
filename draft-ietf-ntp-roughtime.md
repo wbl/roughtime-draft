@@ -100,7 +100,7 @@ Roughtime messages are maps consisting of one or more (tag, value)
 pairs. They start with a header, which contains the number of pairs,
 the tags, and value offsets. The header is followed by a message
 values section which contains the values associated with the tags in
-the header. Messages MUST be formatted according to Figure TODO as
+the header. Messages MUST be formatted according to {{figmessage}} as
 described in the following sections.
 
 Messages MAY be recursive, i.e. the value of a tag can itself be a
@@ -287,7 +287,7 @@ The NONC tag MUST contain the nonce of the message being responded to.
 
 The PATH tag value MUST be a multiple of 32 bytes long and represent a
 path of 32 byte hash values in the Merkle tree used to generate the
-ROOT value as described in a later section TODO. In the case where a
+ROOT value as described in a later section  In the case where a
 response is prepared for a single request and the Merkle tree contains
 only the root node, the size of PATH MUST be zero.
 
@@ -328,7 +328,7 @@ The INDX tag value is a uint32 determining the position of NONC in the
 Merkle tree used to generate the ROOT value as described in later
 section TODO.
 
-## The Merkel Tree
+## The Merkel Tree (#tree)
 
 A Merkle tree is a binary tree where the value of each non-leaf node
 is a hash value derived from its two children. The root of the tree is
@@ -513,7 +513,7 @@ The initial contents of this registry shall be as follows:
 | 0x80000000-0xffffffff | Reserved for Private | [[this memo]] |
 |                       | or Experimental use  |               |
 
-## Roughtime Tag Registry	 		
+## Roughtime Tag Registry
 
 IANA is requested to create a new registry entitled "Roughtime Tag
 Registry".  Entries SHALL have the following fields:
@@ -528,42 +528,28 @@ Registry".  Entries SHALL have the following fields:
 
 The policy for allocation of new entries in this registry SHOULD be:
 Specification Required.
-		 		
+
 The initial contents of this registry SHALL be as follows:
-		 		
-+============+======================+===============+
-| Tag | ASCII Representation | Reference |
-+============+======================+===============+
+
+
+| Tag | ASCII Representation | Reference   |
++-----:+------------------+--------------|
 | 0x7a7a7a7a | ZZZZ                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x00474953 | SIG                  | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x00524556 | VER                  | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x434e4f4e | NONC                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x454c4544 | DELE                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x48544150 | PATH                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x49444152 | RADI                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x4b425550 | PUBK                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x5044494d | MIDP                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x50455253 | SREP                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x544e494d | MINT                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x544f4f52 | ROOT                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x54524543 | CERT                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x5458414d | MAXT                 | [[this memo]] |
-+------------+----------------------+---------------+
 | 0x58444e49 | INDX                 | [[this memo]] |
-+------------+----------------------+---------------+
+
 
 # Privacy Considerations
 
