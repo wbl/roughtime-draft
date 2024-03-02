@@ -46,7 +46,7 @@ time it is.
 
 Time synchronization is essential to Internet security as many
 security protocols and other applications require synchronization
-{{?RFC738}} [@MCBG]. Unfortunately widely deployed protocols such as
+{{?RFC738}}. Unfortunately widely deployed protocols such as
 the Network Time Protocol (NTP) {{?RFC5905}} lack essential security
 features, and even newer protocols like Network Time Security (NTS)
 {{?RFC8915}} lack mechanisms to ensure that the servers behave
@@ -172,8 +172,8 @@ A timestamp is a uint64 count of seconds since the Unix epoch in UTC.
 
 All Roughtime messages start with a header. The first four bytes of
 the header is the uint32 number of tags N, and hence of (tag, value)
-pairs. The following 4*(N-1) bytes are offsets, each a uint32. The
-last 4*N bytes in the header are tags.  Offsets refer to the positions
+pairs. The following 4\*(N-1) bytes are offsets, each a uint32. The
+last 4\*N bytes in the header are tags.  Offsets refer to the positions
 of the values in the message values section. All offsets MUST be
 multiples of four and placed in increasing order. The first
 post-header byte is at offset 0. The offset array is considered to
@@ -214,7 +214,7 @@ contains a Roughtime message as specified in {{message-format}}.
 |                                                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~~~
-{: #figpack title="Roughtime packet}
+{: #figpack title="Roughtime packet"}
 
 Roughtime request and response packets MUST be transmitted in a single
 datagram when the UDP transport mode is used. Setting the packet's
@@ -337,18 +337,18 @@ Merkle tree represents the nonce in one request. Leaf nodes are
 indexed left to right, beginning with zero. The values of all nodes
 are calculated from the leaf nodes and up towards the root node using
 the first 32 bytes of the output of the SHA-512 hash algorithm
-[SHS]. For leaf nodes, the byte 0x00 is prepended to the nonce before
-applying the hash function. For all other nodes, the byte 0x01 is
-concatenated with first the left and then the right child node value
-before applying the hash function. The value of the Merkle tree's root
-node is included in the ROOT tag of the response. The index of a
-request's nonce node is included in the INDX tag of the response. The
-values of all sibling nodes in the path between a request's nonce node
-and the root node is stored in the PATH tag so that the client can
-reconstruct and validate the value in the ROOT tag using its
-nonce. These values are each 32 bytes and are stored one after the
-other with no additional padding or structure. The order in which they
-are stored is described in the next section.
+{{RFC6234}}. For leaf nodes, the byte 0x00 is prepended to the nonce
+before applying the hash function. For all other nodes, the byte 0x01
+is concatenated with first the left and then the right child node
+value before applying the hash function. The value of the Merkle
+tree's root node is included in the ROOT tag of the response. The
+index of a request's nonce node is included in the INDX tag of the
+response. The values of all sibling nodes in the path between a
+request's nonce node and the root node is stored in the PATH tag so
+that the client can reconstruct and validate the value in the ROOT tag
+using its nonce. These values are each 32 bytes and are stored one
+after the other with no additional padding or structure. The order in
+which they are stored is described in the next section.
 
 ### Root Value Validity Check Algorithm
 
@@ -422,7 +422,7 @@ failure report as described below.
 ##  Measurement sequence
 
 The client randomly permutes three servers from the list, and
-seqeuntially queries them. The first probe uses a NONC that is
+sequentially queries them. The first probe uses a NONC that is
 randomly generated. The second query uses H(resp||rand) where rand is
 a random 32 byte value and resp is the entire response to the first
 probe. The third query uses H(resp||rand) for a different 32 byte
