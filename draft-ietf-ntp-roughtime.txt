@@ -5,7 +5,7 @@
 Network Time Protocols                                           W. Ladd
 Internet-Draft                                       Akamai Technologies
 Intended status: Informational                               M. Dansarie
-Expires: 2 September 2024                                   1 March 2024
+Expires: 3 September 2024                                   2 March 2024
 
 
                                Roughtime
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 September 2024.
+   This Internet-Draft will expire on 3 September 2024.
 
 Copyright Notice
 
@@ -84,7 +84,7 @@ Table of Contents
        6.2.5.  SERP
        6.2.6.  CERT
        6.2.7.  INDX
-     6.3.  The Merkel Tree
+     6.3.  The Merkel Tree (#tree)
        6.3.1.  Root Value Validity Check Algorithm
      6.4.  Validity of Response
    7.  Integration into NTP
@@ -167,7 +167,7 @@ Table of Contents
    pairs.  They start with a header, which contains the number of pairs,
    the tags, and value offsets.  The header is followed by a message
    values section which contains the values associated with the tags in
-   the header.  Messages MUST be formatted according to Figure TODO as
+   the header.  Messages MUST be formatted according to Figure 1 as
    described in the following sections.
 
    Messages MAY be recursive, i.e. the value of a tag can itself be a
@@ -353,7 +353,7 @@ Table of Contents
 
    The PATH tag value MUST be a multiple of 32 bytes long and represent
    a path of 32 byte hash values in the Merkle tree used to generate the
-   ROOT value as described in a later section TODO.  In the case where a
+   ROOT value as described in a later section In the case where a
    response is prepared for a single request and the Merkle tree
    contains only the root node, the size of PATH MUST be zero.
 
@@ -394,7 +394,7 @@ Table of Contents
    the Merkle tree used to generate the ROOT value as described in later
    section TODO.
 
-6.3.  The Merkel Tree
+6.3.  The Merkel Tree (#tree)
 
    A Merkle tree is a binary tree where the value of each non-leaf node
    is a hash value derived from its two children.  The root of the tree
@@ -605,39 +605,41 @@ Table of Contents
 
    The initial contents of this registry SHALL be as follows:
 
-   +============+======================+===============+ | Tag | ASCII
-   Representation | Reference |
-   +============+======================+===============+ | 0x7a7a7a7a |
-   ZZZZ | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x00474953 |
-   SIG | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x00524556 |
-   VER | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x434e4f4e |
-   NONC | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x454c4544 |
-   DELE | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x48544150 |
-   PATH | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x49444152 |
-   RADI | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x4b425550 |
-   PUBK | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x5044494d |
-   MIDP | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x50455253 |
-   SREP | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x544e494d |
-   MINT | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x544f4f52 |
-   ROOT | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x54524543 |
-   CERT | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x5458414d |
-   MAXT | [[this memo]] |
-   +------------+----------------------+---------------+ | 0x58444e49 |
-   INDX | [[this memo]] |
-   +------------+----------------------+---------------+
+           +============+======================+===============+
+           |        Tag | ASCII Representation | Reference     |
+           +============+======================+===============+
+           | 0x7a7a7a7a | ZZZZ                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x00474953 | SIG                  | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x00524556 | VER                  | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x434e4f4e | NONC                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x454c4544 | DELE                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x48544150 | PATH                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x49444152 | RADI                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x4b425550 | PUBK                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x5044494d | MIDP                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x50455253 | SREP                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x544e494d | MINT                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x544f4f52 | ROOT                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x54524543 | CERT                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x5458414d | MAXT                 | [[this memo]] |
+           +------------+----------------------+---------------+
+           | 0x58444e49 | INDX                 | [[this memo]] |
+           +------------+----------------------+---------------+
+
+                                  Table 2
 
 12.  Privacy Considerations
 
