@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-29T00:37:14.519086+00:00",
+  "timestamp": "2024-03-03T00:39:38.221763+00:00",
   "repo": "wbl/roughtime-draft",
   "labels": [
     {
@@ -49,6 +49,31 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOLYaY4c6A1lHT",
+      "title": "Break lines at 80 characters",
+      "url": "https://github.com/wbl/roughtime-draft/issues/1",
+      "state": "CLOSED",
+      "author": "cjpatton",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This make it easier to edit with more text editors (vim in particular) and to read PRs.",
+      "createdAt": "2024-02-29T15:30:31Z",
+      "updatedAt": "2024-03-01T21:30:50Z",
+      "closedAt": "2024-03-01T21:30:50Z",
+      "comments": [
+        {
+          "author": "wbl",
+          "authorAssociation": "OWNER",
+          "body": "Done",
+          "createdAt": "2024-03-01T21:30:50Z",
+          "updatedAt": "2024-03-01T21:30:50Z"
+        }
+      ]
+    }
+  ],
   "pulls": []
 }
