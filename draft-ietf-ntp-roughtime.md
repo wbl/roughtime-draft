@@ -234,15 +234,19 @@ number is used.
 
 ## Requests
 
-A request MUST contain the tags VER and NONC. Tags other than NONC
-and VER SHOULD be ignored by the server. A future version of this
-protocol may mandate additional tags in the message and asign them
-semantic meaning. The size of the request message SHOULD be at least
-1024 bytes when the UDP transport mode is used. To attain this size
-the ZZZZ tag SHOULD be added to the message. Its value SHOULD be all
-zeros. Responding to requests shorter than 1024 bytes is OPTIONAL and
-servers MUST NOT send responses larger than the requests they are
-replying to.
+The client begins the protocol with a server's long-term public key
+and its associated DNS name.
+
+A request MUST contain the tags VER and NONC and SHOULD include the
+tag SRV. All other tags SHOULD be ignored by the server. A future
+version of this protocol may mandate additional tags in the message
+and asign them semantic meaning.
+
+The size of the request message SHOULD be at least 1024 bytes when the
+UDP transport mode is used. To attain this size the ZZZZ tag SHOULD be
+added to the message. Its value SHOULD be all zeros. Responding to
+requests shorter than 1024 bytes is OPTIONAL and servers MUST NOT send
+responses larger than the requests they are replying to.
 
 ### VER
 
@@ -258,7 +262,26 @@ The value of the NONC tag is a 32 byte nonce. It SHOULD be generated
 in a manner indistinguishable from random. BCP 106 contains specific
 guidelines regarding this {{!RFC4086}}.
 
+### SRV
+
+The SRV tag is used by the client to indicate which long-term public
+key it expects to verify the response with. The value of the SRV tag
+is `H(0xff || dns_name)` where `dns_name` is the serer's DNS name.
+
 ## Responses
+
+The server begins the request handling process with a set of long-term
+keys and their associated DNS names. It resolves which long-term key
+to use with the following procedure:
+
+1. If the request contains a SRV tag, then the server looks up the
+   long-term key associated with the DNS name indicated by the SRV
+   value. If no such key exists, then the server MUST ignore the
+   request.
+
+1. If the request contains no SRV tag, but the server has just one
+   long-term key, then proceed with that key. Othwerise, if the server
+   has multipile long-term keys, then it MUST ignore the request.
 
  A response MUST contain the tags SIG, VER, NONC, PATH, SREP, CERT,
  and INDX.
@@ -467,6 +490,16 @@ guarantee of the server. Servers MUST NOT send response packets larger
 than the request packets sent by clients, in order to prevent
 amplification attacks.
 
+# Operational Considerations
+
+## Multi-tenancy
+
+It is expected that clients identify a server by its long-term public
+key and a DNS name. Because multiple servers may be listening on the
+same IP or port space, the protocol is designed so that the client
+indicates which server it expects to respond. This is done with the
+SRV tag.
+
 # IANA Considerations
 
 ## Service Name and Transport Protocol Port Number Registry
@@ -536,6 +569,7 @@ The initial contents of this registry SHALL be as follows:
 +-----:+------------------+--------------|
 | 0x7a7a7a7a | ZZZZ                 | [[this memo]] |
 | 0x00474953 | SIG                  | [[this memo]] |
+| 0x00535256 | SRV                  | [[this memo]] |
 | 0x00524556 | VER                  | [[this memo]] |
 | 0x434e4f4e | NONC                 | [[this memo]] |
 | 0x454c4544 | DELE                 | [[this memo]] |
@@ -553,11 +587,14 @@ The initial contents of this registry SHALL be as follows:
 
 # Privacy Considerations
 
-This protocol is designed to obscure all client identifiers. Servers
-necessarily have persistent long-term identities essential to
-enforcing correct behavior. Generating nonces in a nonrandom manner
-can cause leaks of private data or enable tracking of clients as they
-move between networks.
+This protocol is designed to obscure all client identifiers that could
+be fingerprinted. The only known exception is the SRV tag, which
+indicates which DNS name the client associates to the server's
+long-term public key. However, any attempt to use this name to
+fingerprint clients would be apparent in DNS.
+
+Generating nonces in a nonrandom manner can cause leaks of private
+data or enable tracking of clients as they move between networks.
 
 --- back
 
