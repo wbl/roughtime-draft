@@ -244,10 +244,10 @@ draft number is used.
 
 ## Requests
 
-A request MUST contain the tags VER and NONC. Tags other than NONC
-and VER SHOULD be ignored by the server. A future version of this
-protocol may mandate additional tags in the message and assign them
-semantic meaning.
+A request MUST contain the tags VER and NONC and SHOIULD include the
+tag SRV. Tags other than NONC and VER SHOULD be ignored by the server.
+A future version of this protocol may mandate additional tags in the
+message and assign them semantic meaning.
 
 The size of the request message SHOULD be at least 1024 bytes when the
 UDP transport mode is used. To attain this size the ZZZZ tag SHOULD be
@@ -269,7 +269,26 @@ The value of the NONC tag is a 32 byte nonce. It SHOULD be generated
 in a manner indistinguishable from random. BCP 106 contains specific
 guidelines regarding this {{!RFC4086}}.
 
+### SRV
+
+The SRV tag is used by the client to indicate which long-term public
+key it expects to verify the response with. The value of the SRV tag
+is `H(0xff || public_key)` where `public_key` is the server's
+long-lived, 32-byte Ed25519 public key.
+
 ## Responses
+
+The server begins the request handling process with a set of long-term
+keys. It resolves which long-term key to use with the following
+procedure:
+
+1. If the request contains a SRV tag, then the server looks up the
+   long-term key indicated by the SRV value. If no such key exists,
+   then the server MUST ignore the request.
+
+1. If the request contains no SRV tag, but the server has just one
+   long-term key, then proceed with that key. Othwerise, if the server
+   has multipile long-term keys, then it MUST ignore the request.
 
  A response MUST contain the tags SIG, VER, NONC, PATH, SREP, CERT,
  and INDX.
@@ -516,6 +535,15 @@ enforcing correct behavior. Generating nonces in a nonrandom manner
 can cause leaks of private data or enable tracking of clients as they
 move between networks.
 
+# Operational Considerations
+
+## Multi-tenancy
+
+It is expected that clients identify a server by its long-term public
+key. Because multiple servers may be listening on the same IP or port
+space, the protocol is designed so that the client indicates which
+server it expects to respond. This is done with the SRV tag.
+
 # IANA Considerations
 
 ## Service Name and Transport Protocol Port Number Registry
@@ -585,6 +613,7 @@ The initial contents of this registry SHALL be as follows:
 +-----:+------------------+--------------|
 | 0x7a7a7a7a | ZZZZ                 | [[this memo]] |
 | 0x00474953 | SIG                  | [[this memo]] |
+| 0x00535256 | SRV                  | [[this memo]] |
 | 0x00524556 | VER                  | [[this memo]] |
 | 0x434e4f4e | NONC                 | [[this memo]] |
 | 0x454c4544 | DELE                 | [[this memo]] |
