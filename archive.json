@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-03T00:39:38.221763+00:00",
+  "timestamp": "2024-03-05T00:37:14.064246+00:00",
   "repo": "wbl/roughtime-draft",
   "labels": [
     {
@@ -75,5 +75,93 @@
       ]
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 2,
+      "id": "PR_kwDOLYaY4c5onxTF",
+      "title": "Add support for key multiplexing",
+      "url": "https://github.com/wbl/roughtime-draft/pull/2",
+      "state": "OPEN",
+      "author": "cjpatton",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Resolves https://github.com/aanchal4/draft-roughtime/issues/46.\r\n\r\nAdd multi-tenancy as an operational consideration. The idea is that if multiple servers share the same IP or port space, then the client needs a way to indicate which server it expects to respond to a request.\r\n\r\nTo resolve this, define a new request tag, SRV, that indicates the DNS name associated with long-term public key the client expects to verify the response with.",
+      "createdAt": "2024-03-04T18:02:33Z",
+      "updatedAt": "2024-03-04T20:27:23Z",
+      "baseRepository": "wbl/roughtime-draft",
+      "baseRefName": "main",
+      "baseRefOid": "695381624a2478973d7f090dc60725746a4433d8",
+      "headRepository": "cjpatton/roughtime-draft",
+      "headRefName": "multi-key",
+      "headRefOid": "8afc804e98413bb54e395316faac1acde3cd28c2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLYaY4c5yJBHQ",
+          "commit": {
+            "abbreviatedOid": "8afc804"
+          },
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-04T18:03:54Z",
+          "updatedAt": "2024-03-04T18:03:54Z",
+          "comments": [
+            {
+              "originalPosition": 95,
+              "body": "Reviewer note: I'm not super confident about this text. It seems like we need to say something about the extra fingerprinting risk, but I'm not sure what to say.\r\n\r\nI guess the fingerprinting risk is similar to SNI for TLS, although it's important to emphasize that we don't lose privacy in the same way.",
+              "createdAt": "2024-03-04T18:03:54Z",
+              "updatedAt": "2024-03-04T18:03:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLYaY4c5yJy4y",
+          "commit": {
+            "abbreviatedOid": "8afc804"
+          },
+          "author": "wbl",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-03-04T19:26:15Z",
+          "updatedAt": "2024-03-04T19:26:19Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "I'm not sure we want a 1:1 mapping of key to DNS name. Wasn't the idea here to have multiple keys on the same DNS name? Also typo in server",
+              "createdAt": "2024-03-04T19:26:15Z",
+              "updatedAt": "2024-03-04T19:26:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLYaY4c5yKM6y",
+          "commit": {
+            "abbreviatedOid": "8afc804"
+          },
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-04T20:27:18Z",
+          "updatedAt": "2024-03-04T20:27:18Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "Fixed the typo.\r\n\r\nFrom CF's perspective, the goal is be able to support multiple long-term keys on the same IP and port. It's fine if the mapping from long-term public keys to DNS names is 1:1.\r\n\r\nAlso, matches your suggestion here: https://mailarchive.ietf.org/arch/msg/ntp/K1InWKz-VKdL20KgSqj6AV0p4cs/",
+              "createdAt": "2024-03-04T20:27:18Z",
+              "updatedAt": "2024-03-04T20:27:18Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
