@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-31T00:42:10.333244+00:00",
+  "timestamp": "2024-04-02T00:39:10.577650+00:00",
   "repo": "wbl/roughtime-draft",
   "labels": [
     {
@@ -162,6 +162,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOLYaY4c5rQHik",
+      "title": "Editorial changes to draft",
+      "url": "https://github.com/wbl/roughtime-draft/pull/3",
+      "state": "OPEN",
+      "author": "dansarie",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This fixes a number of minor issues with the draft, including many mentioned in aanchal4/draft-roughtime#45. None of them should be controversial.\r\n\r\n* Update author name and organzation.\r\n* Fix misspellings and missing commas.\r\n* Many sections were mushed together into a single paragraph when the draft was converted to Markdown. They are now split up into separate paragraphs again.\r\n* Fix links to sections and figures.\r\n* Update description of radius in protocol overview to be consistent with new radius format.\r\n* Proper variable index subscript in \"The Guarantee\".\r\n* Replace PAD example with ZZZZ example.\r\n* Some clarifications in \"Root Value Validity Check Algorithm\"\r\n* Fix paragraphs in \"IANA Considerations\" that were cut off in the pdf version.\r\n* Move \"Privacy Considerations\" to come after \"Security Considerations\".\r\n* Reference RFCs for JSON and base64.",
+      "createdAt": "2024-03-31T14:48:00Z",
+      "updatedAt": "2024-03-31T14:48:01Z",
+      "baseRepository": "wbl/roughtime-draft",
+      "baseRefName": "main",
+      "baseRefOid": "695381624a2478973d7f090dc60725746a4433d8",
+      "headRepository": "dansarie/roughtime-draft",
+      "headRefName": "nits",
+      "headRefOid": "d162e01ea4027f5faaef5e52b27f950b6c29e76d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
