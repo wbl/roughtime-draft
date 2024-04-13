@@ -164,7 +164,7 @@ uint32 but may also be listed in this document as a sequence of up to
 four ASCII characters {{!RFC20}}. ASCII strings shorter than four
 characters can be unambiguously converted to tags by padding them with
 zero bytes. For example, the ASCII string "NONC" would correspond to
-the tag 0x434e4f4e and "ZZZZ" would correspond to 0x7a7a7a7a. Note
+the tag 0x434e4f4e and "ZZZZ" would correspond to 0x5a5a5a5a. Note
 that when encoded into a message the ASCII values will be in the
 natural bytewise order.
 
