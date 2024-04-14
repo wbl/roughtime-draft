@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-11T00:38:43.455012+00:00",
+  "timestamp": "2024-04-14T00:35:16.347722+00:00",
   "repo": "wbl/roughtime-draft",
   "labels": [
     {
@@ -73,6 +73,22 @@
           "updatedAt": "2024-03-01T21:30:50Z"
         }
       ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOLYaY4c6Fj5vd",
+      "title": "ZZZZ Tag does not match Ascii representation",
+      "url": "https://github.com/wbl/roughtime-draft/issues/4",
+      "state": "OPEN",
+      "author": "cjpatton",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "https://github.com/wbl/roughtime-draft/blob/695381624a2478973d7f090dc60725746a4433d8/draft-ietf-ntp-roughtime.md?plain=1#L537\r\n\r\n\"ZZZZ\" is 0x5a5a5a5a in hex, not 0x7a7a7a7a. This is \"zzzz\".\r\n\r\nThe intention is probably \"ZZZZ\", so the table should be updated to 0x5a5a5a5a.",
+      "createdAt": "2024-04-12T19:35:00Z",
+      "updatedAt": "2024-04-12T19:35:00Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -175,19 +191,40 @@
       "labels": [],
       "body": "This fixes a number of minor issues with the draft, including many mentioned in aanchal4/draft-roughtime#45. None of them should be controversial.\r\n\r\n* Update author name and organzation.\r\n* Fix misspellings and missing commas.\r\n* Many sections were mushed together into a single paragraph when the draft was converted to Markdown. They are now split up into separate paragraphs again.\r\n* Fix links to sections and figures.\r\n* Update description of radius in protocol overview to be consistent with new radius format.\r\n* Proper variable index subscript in \"The Guarantee\".\r\n* Replace PAD example with ZZZZ example.\r\n* Some clarifications in \"Root Value Validity Check Algorithm\"\r\n* Fix paragraphs in \"IANA Considerations\" that were cut off in the pdf version.\r\n* Move \"Privacy Considerations\" to come after \"Security Considerations\".\r\n* Reference RFCs for JSON and base64.",
       "createdAt": "2024-03-31T14:48:00Z",
-      "updatedAt": "2024-03-31T14:48:01Z",
+      "updatedAt": "2024-04-13T03:27:53Z",
       "baseRepository": "wbl/roughtime-draft",
       "baseRefName": "main",
       "baseRefOid": "695381624a2478973d7f090dc60725746a4433d8",
       "headRepository": "dansarie/roughtime-draft",
       "headRefName": "nits",
-      "headRefOid": "d162e01ea4027f5faaef5e52b27f950b6c29e76d",
+      "headRefOid": "71a271299a5ce6eb819d00f0877e6918e494ee26",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLYaY4c53HNfu",
+          "commit": {
+            "abbreviatedOid": "d162e01"
+          },
+          "author": "lukevalenta",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-12T20:27:41Z",
+          "updatedAt": "2024-04-12T20:27:41Z",
+          "comments": [
+            {
+              "originalPosition": 103,
+              "body": "As per https://github.com/wbl/roughtime-draft/issues/4\r\n```suggestion\r\nthe tag 0x434e4f4e and \"ZZZZ\" would correspond to 0x5a5a5a5a. Note\r\n```",
+              "createdAt": "2024-04-12T20:27:41Z",
+              "updatedAt": "2024-04-12T20:27:41Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
