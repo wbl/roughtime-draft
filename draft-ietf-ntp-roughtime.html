@@ -12,14 +12,14 @@
 rough time synchronization even for clients without any idea of what
 time it is. 
     " name="description">
-<meta content="xml2rfc 3.19.4" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="next generation" name="keyword">
 <meta content="unicorn" name="keyword">
 <meta content="sparkling distributed ledger" name="keyword">
 <meta content="draft-ietf-ntp-roughtime-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.4
-    Python 3.11.6
+  xml2rfc 3.21.0
+    Python 3.11.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
@@ -1030,11 +1030,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Roughtime</td>
-<td class="right">March 2024</td>
+<td class="right">April 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ladd &amp; Dansarie</td>
-<td class="center">Expires 3 September 2024</td>
+<td class="center">Expires 22 October 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-ntp-roughtime-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-03-02" class="published">2 March 2024</time>
+<time datetime="2024-04-20" class="published">20 April 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-09-03">3 September 2024</time></dd>
+<dd class="expires"><time datetime="2024-10-22">22 October 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1061,6 +1061,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </div>
 <div class="author">
       <div class="author-name">M. Dansarie</div>
+<div class="org">Netnod</div>
 </div>
 </dd>
 </dl>
@@ -1101,7 +1102,7 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1200,7 +1201,7 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                     <p id="section-toc.1-1.6.2.2.2.4.1"><a href="#section-6.2.4" class="auto internal xref">6.2.4</a>.  <a href="#name-path" class="internal xref">PATH</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.5">
-                    <p id="section-toc.1-1.6.2.2.2.5.1"><a href="#section-6.2.5" class="auto internal xref">6.2.5</a>.  <a href="#name-serp" class="internal xref">SERP</a></p>
+                    <p id="section-toc.1-1.6.2.2.2.5.1"><a href="#section-6.2.5" class="auto internal xref">6.2.5</a>.  <a href="#name-srep" class="internal xref">SREP</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.6">
                     <p id="section-toc.1-1.6.2.2.2.6.1"><a href="#section-6.2.6" class="auto internal xref">6.2.6</a>.  <a href="#name-cert" class="internal xref">CERT</a></p>
@@ -1211,7 +1212,7 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
-                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-the-merkel-tree-tree" class="internal xref">The Merkel Tree (#tree)</a></p>
+                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-the-merkle-tree" class="internal xref">The Merkle Tree</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.1">
                     <p id="section-toc.1-1.6.2.3.2.1.1"><a href="#section-6.3.1" class="auto internal xref">6.3.1</a>.  <a href="#name-root-value-validity-check-a" class="internal xref">Root Value Validity Check Algorithm</a></p>
@@ -1247,21 +1248,21 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
-                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-service-name-and-transport-" class="internal xref">Service Name and Transport Protocol Port Number Registry</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
-                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-roughtime-version-registry" class="internal xref">Roughtime Version Registry</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
-                <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="auto internal xref">11.3</a>.  <a href="#name-roughtime-tag-registry" class="internal xref">Roughtime Tag Registry</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+                <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-service-name-and-transport-" class="internal xref">Service Name and Transport Protocol Port Number Registry</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+                <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-roughtime-version-registry" class="internal xref">Roughtime Version Registry</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3">
+                <p id="section-toc.1-1.12.2.3.1"><a href="#section-12.3" class="auto internal xref">12.3</a>.  <a href="#name-roughtime-tag-registry" class="internal xref">Roughtime Tag Registry</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
             <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-references" class="internal xref">References</a></p>
@@ -1291,13 +1292,13 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-1-1">Time synchronization is essential to Internet security as many
 security protocols and other applications require synchronization
-<span>[<a href="#RFC738" class="cite xref">RFC738</a>]</span>. Unfortunately widely deployed protocols such as
+<span>[<a href="#RFC738" class="cite xref">RFC738</a>]</span>. Unfortunately, widely deployed protocols such as
 the Network Time Protocol (NTP) <span>[<a href="#RFC5905" class="cite xref">RFC5905</a>]</span> lack essential security
 features, and even newer protocols like Network Time Security (NTS)
 <span>[<a href="#RFC8915" class="cite xref">RFC8915</a>]</span> lack mechanisms to ensure that the servers behave
-correctly. Furthermore clients may lack even a basic idea of the time,
-creating bootstrapping problems. Roughtime uses a list of keys and
-servers to resolve this issue.<a href="#section-1-1" class="pilcrow">¶</a></p>
+correctly. Furthermore, clients may lack even a basic idea of the
+time, creating bootstrapping problems. Roughtime uses a list of keys
+and servers to resolve this issue.<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1325,18 +1326,17 @@ received the client's request. The derived value included in the
 server's response is the root of a Merkle tree which includes the hash
 of the client's nonce as the value of one of its leaf nodes. This
 enables the server to amortize the relatively costly signing operation
-over a number of client requests. Single server mode: At its most
-basic level, Roughtime is a one round protocol in which a completely
-fresh client requests the current time and the server sends a signed
-response. The response includes a timestamp and a radius used to
-indicate the server's certainty about the reported time. For example,
-a radius of 1,000,000 microseconds means the server is absolutely
-confident that the true time is within one second of the reported
-time. The server proves freshness of its response as follows. The
-client's request contains a nonce which the server incorporates into
-its signed response. The client can verify the server's signatures and
-- provided that the nonce has sufficient entropy - this proves that
-the signed response could only have been generated after the nonce.<a href="#section-3-1" class="pilcrow">¶</a></p>
+over a number of client requests.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">Single server mode: At its most basic level, Roughtime is a one round
+protocol in which a completely fresh client requests the current time
+and the server sends a signed response. The response includes a
+timestamp and a radius used to indicate the server's certainty about
+the reported time.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">The server proves freshness of its response as follows. The client's
+request contains a nonce which the server incorporates into its signed
+response. The client can verify the server's signatures and - provided
+that the nonce has sufficient entropy - this proves that the signed
+response could only have been generated after the nonce.<a href="#section-3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-guarantee">
@@ -1344,14 +1344,15 @@ the signed response could only have been generated after the nonce.<a href="#sec
       <h2 id="name-the-guarantee">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-the-guarantee" class="section-name selfRef">The Guarantee</a>
       </h2>
-<p id="section-4-1">A Roughtime server guarantees that a response to a query sent at t1,
-received at t2, and with timestamp t3 has been created between the
-transmission of the query and its reception. If t3 is not within that
-interval, a server inconsistency may be detected and used to impeach
-the server. The propagation of such a guarantee and its use of type
-synchronization is discussed in <a href="#integration-into-ntp" class="auto internal xref">Section 7</a>. No delay
-attacker may affect this: they may only expand the interval between
-t1 and t2, or of course stop the measurement in the first place.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">A Roughtime server guarantees that a response to a query sent at
+t<sub>1</sub>, received at t<sub>2</sub>, and with timestamp
+t<sub>3</sub> has been created between t<sub>1</sub> and
+t<sub>2</sub>. If t<sub>3</sub> is not within that interval, a server
+inconsistency may be detected and used to impeach the server. The
+propagation of such a guarantee and its use of type synchronization is
+discussed in <a href="#integration-into-ntp" class="auto internal xref">Section 7</a>. No delay attacker may affect
+this: they may only expand the interval between t<sub>1</sub> and
+t<sub>2</sub>, or of course stop the measurement in the first place.<a href="#section-4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="message-format">
@@ -1435,7 +1436,7 @@ with the least significant byte first.<a href="#section-5.1.2-1" class="pilcrow"
 significant byte first.<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="tag">
+<div id="type-tag">
 <section id="section-5.1.4">
           <h4 id="name-tag">
 <a href="#section-5.1.4" class="section-number selfRef">5.1.4. </a><a href="#name-tag" class="section-name selfRef">Tag</a>
@@ -1445,9 +1446,9 @@ uint32 but may also be listed in this document as a sequence of up to
 four ASCII characters <span>[<a href="#RFC20" class="cite xref">RFC20</a>]</span>. ASCII strings shorter than four
 characters can be unambiguously converted to tags by padding them with
 zero bytes. For example, the ASCII string "NONC" would correspond to
-the tag 0x434e4f4e and "PAD" would correspond to 0x00444150. Note that
-when encoded into a message the ASCII values will be in the natural
-bytewise order.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
+the tag 0x434e4f4e and "ZZZZ" would correspond to 0x5a5a5a5a. Note
+that when encoded into a message the ASCII values will be in the
+natural bytewise order.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="timestamp">
@@ -1488,19 +1489,20 @@ than once in a header.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
       <h2 id="name-protocol-details">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-protocol-details" class="section-name selfRef">Protocol Details</a>
       </h2>
-<p id="section-6-1">As described in Section 3, clients initiate time synchronization by
-sending requests containing a nonce to servers who send signed time
-responses in return. Roughtime packets can be sent between clients and
-servers either as UDP datagrams or via TCP streams. Servers <span class="bcp14">SHOULD</span>
-support the UDP transport mode, while TCP transport is <span class="bcp14">OPTIONAL</span>. A
-Roughtime packet <span class="bcp14">MUST</span> be formatted according to Figure 2 and as
+<p id="section-6-1">As described in <a href="#protocol-overview" class="auto internal xref">Section 3</a>, clients initiate time
+synchronization by sending requests containing a nonce to servers who
+send signed time responses in return. Roughtime packets can be sent
+between clients and servers either as UDP datagrams or via TCP
+streams. Servers <span class="bcp14">SHOULD</span> support the UDP transport mode, while TCP
+transport is <span class="bcp14">OPTIONAL</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">A Roughtime packet <span class="bcp14">MUST</span> be formatted according to <a href="#figpack" class="auto internal xref">Figure 2</a> and as
 described here. The first field is a uint64 with the value
 0x4d49544847554f52 ("ROUGHTIM" in ASCII). The second field is a uint32
 and contains the length of the third field. The third and last field
-contains a Roughtime message as specified in <a href="#message-format" class="auto internal xref">Section 5</a>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+contains a Roughtime message as specified in <a href="#message-format" class="auto internal xref">Section 5</a>.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <span id="name-roughtime-packet"></span><div id="figpack">
 <figure id="figure-2">
-        <div class="alignLeft art-text artwork" id="section-6-2.1">
+        <div class="alignLeft art-text artwork" id="section-6-3.1">
 <pre>
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1522,21 +1524,22 @@ contains a Roughtime message as specified in <a href="#message-format" class="au
 <a href="#name-roughtime-packet" class="selfRef">Roughtime packet</a>
         </figcaption></figure>
 </div>
-<p id="section-6-3">Roughtime request and response packets <span class="bcp14">MUST</span> be transmitted in a single
+<p id="section-6-4">Roughtime request and response packets <span class="bcp14">MUST</span> be transmitted in a single
 datagram when the UDP transport mode is used. Setting the packet's
-don't fragment bit <span>[<a href="#RFC791" class="cite xref">RFC791</a>]</span> is <span class="bcp14">OPTIONAL</span> in IPv4 networks. Multiple
-requests and responses can be exchanged over an established TCP
-connection. Clients <span class="bcp14">MAY</span> send multiple requests at once and servers <span class="bcp14">MAY</span>
-send responses out of order. The connection <span class="bcp14">SHOULD</span> be closed by the
-client when it has no more requests to send and has received all
+don't fragment bit <span>[<a href="#RFC791" class="cite xref">RFC791</a>]</span> is <span class="bcp14">OPTIONAL</span> in IPv4 networks.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">Multiple requests and responses can be exchanged over an established
+TCP connection. Clients <span class="bcp14">MAY</span> send multiple requests at once and servers
+<span class="bcp14">MAY</span> send responses out of order. The connection <span class="bcp14">SHOULD</span> be closed by
+the client when it has no more requests to send and has received all
 expected responses. Either side <span class="bcp14">SHOULD</span> close the connection in
 response to synchronization, format, implementation-defined timeouts,
-or other errors. All requests and responses <span class="bcp14">MUST</span> contain the VER
-tag. It contains a list of one or more uint32 version numbers. The
-version of Roughtime specified by this memo has version number 1. NOTE
-TO RFC EDITOR: remove this paragraph before publication. For testing
-drafts of this memo, a version number of 0x80000000 plus the draft
-number is used.<a href="#section-6-3" class="pilcrow">¶</a></p>
+or other errors.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">All requests and responses <span class="bcp14">MUST</span> contain the VER tag. It contains a
+list of one or more uint32 version numbers. The version of Roughtime
+specified by this memo has version number 1.<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-7">NOTE TO RFC EDITOR: remove this paragraph before publication. For
+testing drafts of this memo, a version number of 0x80000000 plus the
+draft number is used.<a href="#section-6-7" class="pilcrow">¶</a></p>
 <div id="requests">
 <section id="section-6.1">
         <h3 id="name-requests">
@@ -1544,13 +1547,13 @@ number is used.<a href="#section-6-3" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-6.1-1">A request <span class="bcp14">MUST</span> contain the tags VER and NONC. Tags other than NONC
 and VER <span class="bcp14">SHOULD</span> be ignored by the server. A future version of this
-protocol may mandate additional tags in the message and asign them
-semantic meaning. The size of the request message <span class="bcp14">SHOULD</span> be at least
-1024 bytes when the UDP transport mode is used. To attain this size
-the ZZZZ tag <span class="bcp14">SHOULD</span> be added to the message. Its value <span class="bcp14">SHOULD</span> be all
-zeros. Responding to requests shorter than 1024 bytes is <span class="bcp14">OPTIONAL</span> and
-servers <span class="bcp14">MUST NOT</span> send responses larger than the requests they are
-replying to.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+protocol may mandate additional tags in the message and assign them
+semantic meaning.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">The size of the request message <span class="bcp14">SHOULD</span> be at least 1024 bytes when the
+UDP transport mode is used. To attain this size the ZZZZ tag <span class="bcp14">SHOULD</span> be
+added to the message. Its value <span class="bcp14">SHOULD</span> be all zeros. Responding to
+requests shorter than 1024 bytes is <span class="bcp14">OPTIONAL</span> and servers <span class="bcp14">MUST NOT</span> send
+responses larger than the requests they are replying to.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
 <div id="ver">
 <section id="section-6.1.1">
           <h4 id="name-ver">
@@ -1590,9 +1593,10 @@ guidelines regarding this <span>[<a href="#RFC4086" class="cite xref">RFC4086</a
 <p id="section-6.2.1-1">In general, a SIG tag value is a 64 byte Ed25519 signature
 <span>[<a href="#RFC8032" class="cite xref">RFC8032</a>]</span> over a concatenation of a signature context ASCII string
 and the entire value of a tag. All context strings <span class="bcp14">MUST</span> include a
-terminating zero byte. The SIG tag in the root of a response <span class="bcp14">MUST</span> be
-a signature over the SREP value using the public key contained in
-CERT. The context string <span class="bcp14">MUST</span> be "RoughTime v1 response signature".<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
+terminating zero byte.<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1-2">The SIG tag in the root of a response <span class="bcp14">MUST</span> be a signature over the
+SREP value using the public key contained in CERT. The context string
+<span class="bcp14">MUST</span> be "RoughTime v1 response signature".<a href="#section-6.2.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ver-1">
@@ -1621,25 +1625,25 @@ with the rest of the packet contents.<a href="#section-6.2.2-1" class="pilcrow">
           </h4>
 <p id="section-6.2.4-1">The PATH tag value <span class="bcp14">MUST</span> be a multiple of 32 bytes long and represent a
 path of 32 byte hash values in the Merkle tree used to generate the
-ROOT value as described in a later section  In the case where a
+ROOT value as described in a <a href="#merkle-tree" class="auto internal xref">Section 6.3</a>. In the case where a
 response is prepared for a single request and the Merkle tree contains
 only the root node, the size of PATH <span class="bcp14">MUST</span> be zero.<a href="#section-6.2.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="serp">
+<div id="srep">
 <section id="section-6.2.5">
-          <h4 id="name-serp">
-<a href="#section-6.2.5" class="section-number selfRef">6.2.5. </a><a href="#name-serp" class="section-name selfRef">SERP</a>
+          <h4 id="name-srep">
+<a href="#section-6.2.5" class="section-number selfRef">6.2.5. </a><a href="#name-srep" class="section-name selfRef">SREP</a>
           </h4>
 <p id="section-6.2.5-1">The SREP tag contains a time response. Its value <span class="bcp14">MUST</span> be a Roughtime
-message with the tags ROOT, MIDP, and RADI. The server <span class="bcp14">MAY</span> include any
-of the tags DUT1, DTAI, and LEAP in the contents of the SREP tag. The
-ROOT tag <span class="bcp14">MUST</span> contain a 32 byte value of a Merkle tree root as
-described in Section 6.3. The MIDP tag value <span class="bcp14">MUST</span> be timestamp of the
-moment of processing. The RADI tag value <span class="bcp14">MUST</span> be a uint32 representing
-the server's estimate of the accuracy of MIDP in seconds. Servers <span class="bcp14">MUST</span>
-ensure that the true time is within (MIDP-RADI, MIDP+RADI) at the time
-they transmit the response message.<a href="#section-6.2.5-1" class="pilcrow">¶</a></p>
+message with the tags ROOT, MIDP, and RADI.<a href="#section-6.2.5-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.5-2">The ROOT tag <span class="bcp14">MUST</span> contain a 32 byte value of a Merkle tree root as
+described in <a href="#merkle-tree" class="auto internal xref">Section 6.3</a>.<a href="#section-6.2.5-2" class="pilcrow">¶</a></p>
+<p id="section-6.2.5-3">The MIDP tag value <span class="bcp14">MUST</span> be timestamp of the moment of processing.<a href="#section-6.2.5-3" class="pilcrow">¶</a></p>
+<p id="section-6.2.5-4">The RADI tag value <span class="bcp14">MUST</span> be a uint32 representing the server's estimate
+of the accuracy of MIDP in seconds. Servers <span class="bcp14">MUST</span> ensure that the true
+time is within (MIDP-RADI, MIDP+RADI) at the time they transmit the
+response message.<a href="#section-6.2.5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cert">
@@ -1651,18 +1655,20 @@ they transmit the response message.<a href="#section-6.2.5-1" class="pilcrow">¶
 server's long-term key. Its value is a Roughtime message with the tags
 DELE and SIG, where SIG is a signature over the DELE value. The
 context string used to generate SIG <span class="bcp14">MUST</span> be "RoughTime v1 delegation
-signature--". The DELE tag contains a delegated public-key certificate
-used by the server to sign the SREP tag. Its value is a Roughtime
-message with the tags MINT, MAXT, and PUBK. The purpose of the DELE
-tag is to enable separation of a long-term public key from keys on
-devices exposed to the public Internet. The MINT tag is the minimum
-timestamp for which the key in PUBK is trusted to sign responses. MIDP
-<span class="bcp14">MUST</span> be more than or equal to MINT for a response to be considered
-valid. The MAXT tag is the maximum timestamp for which the key in PUBK
-is trusted to sign responses. MIDP <span class="bcp14">MUST</span> be less than or equal to MAXT
-for a response to be considered valid. The PUBK tag contains a
-temporary 32 byte Ed25519 public key which is used to sign the SREP
-tag.<a href="#section-6.2.6-1" class="pilcrow">¶</a></p>
+signature--".<a href="#section-6.2.6-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.6-2">The DELE tag contains a delegated public-key certificate used by the
+server to sign the SREP tag. Its value is a Roughtime message with the
+tags MINT, MAXT, and PUBK. The purpose of the DELE tag is to enable
+separation of a long-term public key from keys on devices exposed to
+the public Internet.<a href="#section-6.2.6-2" class="pilcrow">¶</a></p>
+<p id="section-6.2.6-3">The MINT tag is the minimum timestamp for which the key in PUBK is
+trusted to sign responses. MIDP <span class="bcp14">MUST</span> be more than or equal to MINT for
+a response to be considered valid.<a href="#section-6.2.6-3" class="pilcrow">¶</a></p>
+<p id="section-6.2.6-4">The MAXT tag is the maximum timestamp for which the key in PUBK is
+trusted to sign responses. MIDP <span class="bcp14">MUST</span> be less than or equal to MAXT for
+a response to be considered valid.<a href="#section-6.2.6-4" class="pilcrow">¶</a></p>
+<p id="section-6.2.6-5">The PUBK tag contains a temporary 32 byte Ed25519 public key which is
+used to sign the SREP tag.<a href="#section-6.2.6-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="indx">
@@ -1671,50 +1677,54 @@ tag.<a href="#section-6.2.6-1" class="pilcrow">¶</a></p>
 <a href="#section-6.2.7" class="section-number selfRef">6.2.7. </a><a href="#name-indx" class="section-name selfRef">INDX</a>
           </h4>
 <p id="section-6.2.7-1">The INDX tag value is a uint32 determining the position of NONC in the
-Merkle tree used to generate the ROOT value as described in later
-section TODO.<a href="#section-6.2.7-1" class="pilcrow">¶</a></p>
+Merkle tree used to generate the ROOT value as described in
+<a href="#merkle-tree" class="auto internal xref">Section 6.3</a>.<a href="#section-6.2.7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="the-merkel-tree-tree">
+<div id="merkle-tree">
 <section id="section-6.3">
-        <h3 id="name-the-merkel-tree-tree">
-<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-the-merkel-tree-tree" class="section-name selfRef">The Merkel Tree (#tree)</a>
+        <h3 id="name-the-merkle-tree">
+<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-the-merkle-tree" class="section-name selfRef">The Merkle Tree</a>
         </h3>
 <p id="section-6.3-1">A Merkle tree is a binary tree where the value of each non-leaf node
 is a hash value derived from its two children. The root of the tree is
-thus dependent on all leaf nodes. In Roughtime, each leaf node in the
-Merkle tree represents the nonce in one request. Leaf nodes are
-indexed left to right, beginning with zero. The values of all nodes
-are calculated from the leaf nodes and up towards the root node using
-the first 32 bytes of the output of the SHA-512 hash algorithm
-<span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span>. For leaf nodes, the byte 0x00 is prepended to the nonce
-before applying the hash function. For all other nodes, the byte 0x01
-is concatenated with first the left and then the right child node
-value before applying the hash function. The value of the Merkle
-tree's root node is included in the ROOT tag of the response. The
-index of a request's nonce node is included in the INDX tag of the
-response. The values of all sibling nodes in the path between a
+thus dependent on all leaf nodes.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3-2">In Roughtime, each leaf node in the Merkle tree represents the nonce
+in one request. Leaf nodes are indexed left to right, beginning with
+zero.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
+<p id="section-6.3-3">The values of all nodes are calculated from the leaf nodes and up
+towards the root node using the first 32 bytes of the output of the
+SHA-512 hash algorithm <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span>. For leaf nodes, the byte 0x00 is
+prepended to the nonce before applying the hash function. For all
+other nodes, the byte 0x01 is concatenated with first the left and
+then the right child node value before applying the hash function.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
+<p id="section-6.3-4">The value of the Merkle tree's root node is included in the ROOT tag
+of the response.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
+<p id="section-6.3-5">The index of a request's nonce node is included in the INDX tag of the
+response.<a href="#section-6.3-5" class="pilcrow">¶</a></p>
+<p id="section-6.3-6">The values of all sibling nodes in the path between a
 request's nonce node and the root node is stored in the PATH tag so
 that the client can reconstruct and validate the value in the ROOT tag
 using its nonce. These values are each 32 bytes and are stored one
 after the other with no additional padding or structure. The order in
-which they are stored is described in the next section.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
-<div id="root-value-validity-check-algorithm">
+which they are stored is described in the next section.<a href="#section-6.3-6" class="pilcrow">¶</a></p>
+<div id="check-algorithm">
 <section id="section-6.3.1">
           <h4 id="name-root-value-validity-check-a">
 <a href="#section-6.3.1" class="section-number selfRef">6.3.1. </a><a href="#name-root-value-validity-check-a" class="section-name selfRef">Root Value Validity Check Algorithm</a>
           </h4>
-<p id="section-6.3.1-1">We describe how to compute the root hash of the Merkel tree from the
-values in the tags PATH, INDX, and NONC. Our algorithm maintains a
-current hash value. The bits of INDX are ordered from least to most
-significant in this algorithm. At initialization hash is set to
-H(0x00 || nonce). If no more entries remain in PATH the current hash
-is the hash of the Merkel tree. All remaining bits of INDX must be
-zero. Otherwise let node be the next 32 bytes in PATH. If the current
-bit in INDX is 0 then hash = H(0x01 || node || hash), else hash =
-H(0x01 || hash || node).<a href="#section-6.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.3.1-1">We describe how to compute the root hash of the Merkle tree from the
+values in the tags PATH, INDX, and NONC. The bits of INDX are ordered
+from least to most significant. <code>H(x)</code> denotes the first 32 bytes of
+the SHA-512 hash digest of x and <code>||</code> denotes concatenation.<a href="#section-6.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.3.1-2">Our algorithm maintains a current hash value. At initialization, hash
+is set to <code>H(0x00 || nonce)</code>. If no more entries remain in PATH the
+current hash is the hash of the Merkle tree. All remaining bits of
+INDX <span class="bcp14">MUST</span> be zero at that time. Otherwise, let node be the next 32
+bytes in PATH. If the current bit in INDX is 0 then <code>hash = H(0x01 ||
+node || hash)</code>, else <code>hash = H(0x01 || hash || node)</code>.<a href="#section-6.3.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1730,7 +1740,7 @@ client through other means.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.4-2">The signature in CERT was made with the long-term key of the server.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 <p id="section-6.4-3">The DELE timestamps and the MIDP value are consistent.<a href="#section-6.4-3" class="pilcrow">¶</a></p>
 <p id="section-6.4-4">The INDX and PATH values prove NONC was included in the Merkle tree
-with value ROOT using the algorithm in Section 6.3.1.<a href="#section-6.4-4" class="pilcrow">¶</a></p>
+with value ROOT using the algorithm in <a href="#check-algorithm" class="auto internal xref">Section 6.3.1</a>.<a href="#section-6.4-4" class="pilcrow">¶</a></p>
 <p id="section-6.4-5">The signature of SREP in SIG validates with the public key in DELE.<a href="#section-6.4-5" class="pilcrow">¶</a></p>
 <p id="section-6.4-6">A response that passes these checks is said to be valid. Validity of a
 response does not prove the time is correct, but merely that the
@@ -1785,7 +1795,7 @@ signature <span class="bcp14">MAY</span> be invalid for this application.<a href
         <h3 id="name-necessary-configuration">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-necessary-configuration" class="section-name selfRef">Necessary configuration</a>
         </h3>
-<p id="section-9.1-1">To carry out a roughtime measurement a client must be equiped with a
+<p id="section-9.1-1">To carry out a Roughtime measurement a client must be equipped with a
 list of servers, a minimum of three of which are operational, not run
 by the same parties. It must also have a means of reporting to the
 provider of such a list, such as an OS vendor or software vendor, a
@@ -1799,9 +1809,9 @@ failure report as described below.<a href="#section-9.1-1" class="pilcrow">¶</a
         </h3>
 <p id="section-9.2-1">The client randomly permutes three servers from the list, and
 sequentially queries them. The first probe uses a NONC that is
-randomly generated. The second query uses H(resp||rand) where rand is
-a random 32 byte value and resp is the entire response to the first
-probe. The third query uses H(resp||rand) for a different 32 byte
+randomly generated. The second query uses <code>H(resp || rand)</code> where rand
+is a random 32 byte value and resp is the entire response to the first
+probe. The third query uses <code>H(resp || rand)</code> for a different 32 byte
 value.  If the times reported are consistent with the causal ordering,
 and the delay is within a system provided parameter, the measurement
 succeeds. If they are not consistent, there has been malfeasance and
@@ -1814,16 +1824,16 @@ and make another measurement.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
         <h3 id="name-malfeasence-reporting">
 <a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-malfeasence-reporting" class="section-name selfRef">Malfeasence reporting</a>
         </h3>
-<p id="section-9.3-1">A malfeasance report is a JSON object with keys "nonces" containing an
-array of the rand values as base64 encoded strings and "responses"
-containing the responses as base64 encoded strings. This report is
-cryptographic proof that at least one server generated an incorrect
-response.  Malfeasence reports <span class="bcp14">MAY</span> be transported by any means to the
-relevant vendor or server operator for discussion. A malfeasance
-report is cryptographic proof that the responses arrived in that
-order, and can be used to demonstrate that a server sent the wrong
-time. The venues for sharing such reports and what to do about them
-are outside the scope of this document.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+<p id="section-9.3-1">A malfeasance report is a JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> object with keys "nonces"
+containing an array of the rand values as base64 <span>[<a href="#RFC4648" class="cite xref">RFC4648</a>]</span> encoded
+strings and "responses" containing an array of the responses as base64
+encoded strings.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+<p id="section-9.3-2">Malfeasence reports <span class="bcp14">MAY</span> be transported by any means to the relevant
+vendor or server operator for discussion. A malfeasance report is
+cryptographic proof that the responses arrived in that order, and can
+be used to demonstrate that at least one server sent the wrong time.
+The venues for sharing such reports and what to do about them are
+outside the scope of this document.<a href="#section-9.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1835,38 +1845,52 @@ are outside the scope of this document.<a href="#section-9.3-1" class="pilcrow">
       </h2>
 <p id="section-10-1">Since the only supported signature scheme, Ed25519, is not quantum
 resistant, the Roughtime version described in this memo will not
-survive the advent of quantum computers.  Maintaining a list of
-trusted servers and adjudicating violations of the rules by servers is
-not discussed in this document and is essential for
-security. Roughtime clients <span class="bcp14">MUST</span> regularly update their view of which
-servers are trustworthy in order to benefit from the detection of
-misbehavior. Validating timestamps made on different dates requires
-knowledge of leap seconds in order to calculate time intervals
-correctly. Servers carry out a significant amount of computation in
-response to clients, and thus may experience vulnerability to denial
-of service attacks. This protocol does not provide any
-confidentiality. Given the nature of timestamps such impact is
-minor. The compromise of a PUBK's private key, even past MAXT, is a
-problem as the private key can be used to sign invalid times that are
-in the range MINT to MAXT, and thus violate the good behavior
-guarantee of the server. Servers <span class="bcp14">MUST NOT</span> send response packets larger
-than the request packets sent by clients, in order to prevent
-amplification attacks.<a href="#section-10-1" class="pilcrow">¶</a></p>
+survive the advent of quantum computers.<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-10-2">Maintaining a list of trusted servers and adjudicating violations of
+the rules by servers is not discussed in this document and is
+essential for security. Roughtime clients <span class="bcp14">MUST</span> regularly update their
+view of which servers are trustworthy in order to benefit from the
+detection of misbehavior.<a href="#section-10-2" class="pilcrow">¶</a></p>
+<p id="section-10-3">Validating timestamps made on different dates requires knowledge of
+leap seconds in order to calculate time intervals correctly.<a href="#section-10-3" class="pilcrow">¶</a></p>
+<p id="section-10-4">Servers carry out a significant amount of computation in response to
+clients, and thus may experience vulnerability to denial of service
+attacks.<a href="#section-10-4" class="pilcrow">¶</a></p>
+<p id="section-10-5">This protocol does not provide any confidentiality. Given the nature
+of timestamps such impact is minor.<a href="#section-10-5" class="pilcrow">¶</a></p>
+<p id="section-10-6">The compromise of a PUBK's private key, even past MAXT, is a problem
+as the private key can be used to sign invalid times that are in the
+range MINT to MAXT, and thus violate the good behavior guarantee of
+the server.<a href="#section-10-6" class="pilcrow">¶</a></p>
+<p id="section-10-7">Servers <span class="bcp14">MUST NOT</span> send response packets larger than the request packets
+sent by clients, in order to prevent amplification attacks.<a href="#section-10-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="privacy-considerations">
+<section id="section-11">
+      <h2 id="name-privacy-considerations">
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
+      </h2>
+<p id="section-11-1">This protocol is designed to obscure all client identifiers. Servers
+necessarily have persistent long-term identities essential to
+enforcing correct behavior. Generating nonces in a nonrandom manner
+can cause leaks of private data or enable tracking of clients as they
+move between networks.<a href="#section-11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-11">
+<section id="section-12">
       <h2 id="name-iana-considerations">
-<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
 <div id="service-name-and-transport-protocol-port-number-registry">
-<section id="section-11.1">
+<section id="section-12.1">
         <h3 id="name-service-name-and-transport-">
-<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-service-name-and-transport-" class="section-name selfRef">Service Name and Transport Protocol Port Number Registry</a>
+<a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-service-name-and-transport-" class="section-name selfRef">Service Name and Transport Protocol Port Number Registry</a>
         </h3>
-<p id="section-11.1-1">IANA is requested to allocate the following entry in the Service
-Name and Transport Protocol Port Number Registry:<a href="#section-11.1-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-11.1-2">
+<p id="section-12.1-1">IANA is requested to allocate the following entry in the Service
+Name and Transport Protocol Port Number Registry:<a href="#section-12.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-12.1-2">
 <pre>
   Service Name: Roughtime
 
@@ -1881,30 +1905,24 @@ Name and Transport Protocol Port Number Registry:<a href="#section-11.1-1" class
   Reference: [[this memo]]
 
   Port Number: [[TBD1]], selected by IANA from the User Port range
-</pre><a href="#section-11.1-2" class="pilcrow">¶</a>
+</pre><a href="#section-12.1-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="roughtime-version-registry">
-<section id="section-11.2">
+<section id="section-12.2">
         <h3 id="name-roughtime-version-registry">
-<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-roughtime-version-registry" class="section-name selfRef">Roughtime Version Registry</a>
+<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-roughtime-version-registry" class="section-name selfRef">Roughtime Version Registry</a>
         </h3>
-<p id="section-11.2-1">IANA is requested to create a new registry entitled "Roughtime
- Version Registry".  Entries shall have the following fields:<a href="#section-11.2-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-11.2-2">
-<pre>
-  Version ID (REQUIRED): a 32-bit unsigned integer
-
-  Version name (REQUIRED): A short text string naming the version
-  being identified.
-
-  Reference (REQUIRED): A reference to a relevant specification
-  document.
-</pre><a href="#section-11.2-2" class="pilcrow">¶</a>
-</div>
-<p id="section-11.2-3">The policy for allocation of new entries <span class="bcp14">SHOULD</span> be: IETF Review.<a href="#section-11.2-3" class="pilcrow">¶</a></p>
-<p id="section-11.2-4">The initial contents of this registry shall be as follows:<a href="#section-11.2-4" class="pilcrow">¶</a></p>
+<p id="section-12.2-1">IANA is requested to create a new registry entitled "Roughtime
+ Version Registry".  Entries shall have the following fields:<a href="#section-12.2-1" class="pilcrow">¶</a></p>
+<p id="section-12.2-2">Version ID (<span class="bcp14">REQUIRED</span>): a 32-bit unsigned integer<a href="#section-12.2-2" class="pilcrow">¶</a></p>
+<p id="section-12.2-3">Version name (<span class="bcp14">REQUIRED</span>): A short text string naming the version being
+identified.<a href="#section-12.2-3" class="pilcrow">¶</a></p>
+<p id="section-12.2-4">Reference (<span class="bcp14">REQUIRED</span>): A reference to a relevant specification
+document.<a href="#section-12.2-4" class="pilcrow">¶</a></p>
+<p id="section-12.2-5">The policy for allocation of new entries <span class="bcp14">SHOULD</span> be: IETF Review.<a href="#section-12.2-5" class="pilcrow">¶</a></p>
+<p id="section-12.2-6">The initial contents of this registry shall be as follows:<a href="#section-12.2-6" class="pilcrow">¶</a></p>
 <table class="center" id="table-1">
           <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
 <thead>
@@ -1945,26 +1963,20 @@ Name and Transport Protocol Port Number Registry:<a href="#section-11.1-1" class
 </section>
 </div>
 <div id="roughtime-tag-registry">
-<section id="section-11.3">
+<section id="section-12.3">
         <h3 id="name-roughtime-tag-registry">
-<a href="#section-11.3" class="section-number selfRef">11.3. </a><a href="#name-roughtime-tag-registry" class="section-name selfRef">Roughtime Tag Registry</a>
+<a href="#section-12.3" class="section-number selfRef">12.3. </a><a href="#name-roughtime-tag-registry" class="section-name selfRef">Roughtime Tag Registry</a>
         </h3>
-<p id="section-11.3-1">IANA is requested to create a new registry entitled "Roughtime Tag
-Registry".  Entries <span class="bcp14">SHALL</span> have the following fields:<a href="#section-11.3-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-11.3-2">
-<pre>
-          Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.
-
-          ASCII Representation (OPTIONAL): The ASCII representation of the
-          tag in accordance with Section 5.1.4 of this memo, if applicable.
-
-          Reference (REQUIRED): A reference to a relevant specification
-          document.
-</pre><a href="#section-11.3-2" class="pilcrow">¶</a>
-</div>
-<p id="section-11.3-3">The policy for allocation of new entries in this registry <span class="bcp14">SHOULD</span> be:
-Specification Required.<a href="#section-11.3-3" class="pilcrow">¶</a></p>
-<p id="section-11.3-4">The initial contents of this registry <span class="bcp14">SHALL</span> be as follows:<a href="#section-11.3-4" class="pilcrow">¶</a></p>
+<p id="section-12.3-1">IANA is requested to create a new registry entitled "Roughtime Tag
+Registry".  Entries <span class="bcp14">SHALL</span> have the following fields:<a href="#section-12.3-1" class="pilcrow">¶</a></p>
+<p id="section-12.3-2">Tag (<span class="bcp14">REQUIRED</span>): A 32-bit unsigned integer in hexadecimal format.<a href="#section-12.3-2" class="pilcrow">¶</a></p>
+<p id="section-12.3-3">ASCII Representation (<span class="bcp14">OPTIONAL</span>): The ASCII representation of the tag
+in accordance with <a href="#type-tag" class="auto internal xref">Section 5.1.4</a> of this memo, if applicable.<a href="#section-12.3-3" class="pilcrow">¶</a></p>
+<p id="section-12.3-4">Reference (<span class="bcp14">REQUIRED</span>): A reference to a relevant specification
+document.<a href="#section-12.3-4" class="pilcrow">¶</a></p>
+<p id="section-12.3-5">The policy for allocation of new entries in this registry <span class="bcp14">SHOULD</span> be:
+Specification Required.<a href="#section-12.3-5" class="pilcrow">¶</a></p>
+<p id="section-12.3-6">The initial contents of this registry <span class="bcp14">SHALL</span> be as follows:<a href="#section-12.3-6" class="pilcrow">¶</a></p>
 <table class="center" id="table-2">
           <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
 <thead>
@@ -2056,18 +2068,6 @@ Specification Required.<a href="#section-11.3-3" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="privacy-considerations">
-<section id="section-12">
-      <h2 id="name-privacy-considerations">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
-      </h2>
-<p id="section-12-1">This protocol is designed to obscure all client identifiers. Servers
-necessarily have persistent long-term identities essential to
-enforcing correct behavior. Generating nonces in a nonrandom manner
-can cause leaks of private data or enable tracking of clients as they
-move between networks.<a href="#section-12-1" class="pilcrow">¶</a></p>
-</section>
-</div>
 <section id="section-13">
       <h2 id="name-references">
 <a href="#section-13" class="section-number selfRef">13. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -2090,6 +2090,10 @@ move between networks.<a href="#section-12-1" class="pilcrow">¶</a></p>
         <dd>
 <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Schiller, J.</span>, and <span class="refAuthor">S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4086">https://www.rfc-editor.org/rfc/rfc4086</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC4648">[RFC4648]</dt>
+        <dd>
+<span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"The Base16, Base32, and Base64 Data Encodings"</span>, <span class="seriesInfo">RFC 4648</span>, <span class="seriesInfo">DOI 10.17487/RFC4648</span>, <time datetime="2006-10" class="refDate">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4648">https://www.rfc-editor.org/rfc/rfc4648</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC6234">[RFC6234]</dt>
         <dd>
 <span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6234">https://www.rfc-editor.org/rfc/rfc6234</a>&gt;</span>. </dd>
@@ -2103,8 +2107,12 @@ move between networks.<a href="#section-12-1" class="pilcrow">¶</a></p>
 <span class="refAuthor">Josefsson, S.</span> and <span class="refAuthor">I. Liusvaara</span>, <span class="refTitle">"Edwards-Curve Digital Signature Algorithm (EdDSA)"</span>, <span class="seriesInfo">RFC 8032</span>, <span class="seriesInfo">DOI 10.17487/RFC8032</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8032">https://www.rfc-editor.org/rfc/rfc8032</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8259">[RFC8259]</dt>
+      <dd>
+<span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8259">https://www.rfc-editor.org/rfc/rfc8259</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -2156,9 +2164,14 @@ working group contributed comments and suggestions.<a href="#appendix-A-1" class
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Marcus Dansarie</span></div>
+<div dir="auto" class="left"><span class="org">Netnod</span></div>
 <div class="email">
 <span>Email:</span>
 <a href="mailto:marcus@dansarie.se" class="email">marcus@dansarie.se</a>
+</div>
+<div class="url">
+<span>URI:</span>
+<a href="https://orcid.org/0000-0001-9246-0263" class="url">https://orcid.org/0000-0001-9246-0263</a>
 </div>
 </address>
 </section>
