@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-25T00:52:18.426687+00:00",
+  "timestamp": "2024-04-28T00:42:29.226613+00:00",
   "repo": "wbl/roughtime-draft",
   "labels": [
     {
@@ -104,18 +104,26 @@
       "labels": [],
       "body": "Resolves https://github.com/aanchal4/draft-roughtime/issues/46.\r\n\r\nAdd multi-tenancy as an operational consideration. The idea is that if multiple servers share the same IP or port space, then the client needs a way to indicate which server it expects to respond to a request.\r\n\r\nTo resolve this, define a new request tag, SRV, that indicates the DNS name associated with long-term public key the client expects to verify the response with.",
       "createdAt": "2024-03-04T18:02:33Z",
-      "updatedAt": "2024-04-20T05:26:55Z",
+      "updatedAt": "2024-04-26T22:25:03Z",
       "baseRepository": "wbl/roughtime-draft",
       "baseRefName": "main",
-      "baseRefOid": "695381624a2478973d7f090dc60725746a4433d8",
+      "baseRefOid": "1a2d2d12c088e129ac662db4790ab263abed1c3b",
       "headRepository": "cjpatton/roughtime-draft",
       "headRefName": "multi-key",
-      "headRefOid": "8afc804e98413bb54e395316faac1acde3cd28c2",
+      "headRefOid": "a37a42a1789785b8606c9e0a47506241ece14a1f",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "body": "Rebased.",
+          "createdAt": "2024-04-25T14:03:47Z",
+          "updatedAt": "2024-04-25T14:03:47Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOLYaY4c5yJBHQ",
@@ -196,6 +204,99 @@
               "updatedAt": "2024-04-20T05:26:55Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOLYaY4c54js6S",
+          "commit": {
+            "abbreviatedOid": "8afc804"
+          },
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-25T14:07:12Z",
+          "updatedAt": "2024-04-25T14:07:12Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "I think 1:1 mapping is perfectly fine, and I don't mind using the DNS name this way. If you don't think this would work, I think the best alternative is to replace `dns_name` input to the hash with the long-lived public key.\r\n\r\nWhat would you like to do? Do you have a suggestion for an alternative?",
+              "createdAt": "2024-04-25T14:07:12Z",
+              "updatedAt": "2024-04-25T14:07:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLYaY4c54lm1k",
+          "commit": {
+            "abbreviatedOid": "8afc804"
+          },
+          "author": "wbl",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-25T17:10:47Z",
+          "updatedAt": "2024-04-25T17:10:47Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "How about hash the public key? I prefer that, but we might have to go to the list for consensus",
+              "createdAt": "2024-04-25T17:10:47Z",
+              "updatedAt": "2024-04-25T17:10:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLYaY4c54nAWC",
+          "commit": {
+            "abbreviatedOid": "8afc804"
+          },
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-25T20:13:22Z",
+          "updatedAt": "2024-04-25T20:13:23Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "Either works for me. We previously discussed hashing the public key as being potentially problematic from a fingerprinting standpoint, but tbh I don't think we're all that much better off with the DNS name. (A malicious roughtime server can always advertise DNS names to specific clients.)",
+              "createdAt": "2024-04-25T20:13:23Z",
+              "updatedAt": "2024-04-25T20:13:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLYaY4c54nCNk",
+          "commit": {
+            "abbreviatedOid": "8afc804"
+          },
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-25T20:18:29Z",
+          "updatedAt": "2024-04-25T20:18:30Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "Tacked on a commit for this, PTAL.",
+              "createdAt": "2024-04-25T20:18:30Z",
+              "updatedAt": "2024-04-25T20:18:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLYaY4c54wXi8",
+          "commit": {
+            "abbreviatedOid": "a37a42a"
+          },
+          "author": "wbl",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-26T22:25:03Z",
+          "updatedAt": "2024-04-26T22:25:03Z",
+          "comments": []
         }
       ]
     },
