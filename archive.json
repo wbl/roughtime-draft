@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-28T00:42:29.226613+00:00",
+  "timestamp": "2024-04-30T00:38:18.194803+00:00",
   "repo": "wbl/roughtime-draft",
   "labels": [
     {
@@ -104,13 +104,13 @@
       "labels": [],
       "body": "Resolves https://github.com/aanchal4/draft-roughtime/issues/46.\r\n\r\nAdd multi-tenancy as an operational consideration. The idea is that if multiple servers share the same IP or port space, then the client needs a way to indicate which server it expects to respond to a request.\r\n\r\nTo resolve this, define a new request tag, SRV, that indicates the DNS name associated with long-term public key the client expects to verify the response with.",
       "createdAt": "2024-03-04T18:02:33Z",
-      "updatedAt": "2024-04-26T22:25:03Z",
+      "updatedAt": "2024-04-29T17:16:29Z",
       "baseRepository": "wbl/roughtime-draft",
       "baseRefName": "main",
       "baseRefOid": "1a2d2d12c088e129ac662db4790ab263abed1c3b",
       "headRepository": "cjpatton/roughtime-draft",
       "headRefName": "multi-key",
-      "headRefOid": "a37a42a1789785b8606c9e0a47506241ece14a1f",
+      "headRefOid": "06874c43ff95ac5487964e05dd08c318d6f724de",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -122,6 +122,20 @@
           "body": "Rebased.",
           "createdAt": "2024-04-25T14:03:47Z",
           "updatedAt": "2024-04-25T14:03:47Z"
+        },
+        {
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "body": "Squashed.",
+          "createdAt": "2024-04-29T17:06:24Z",
+          "updatedAt": "2024-04-29T17:06:24Z"
+        },
+        {
+          "author": "cjpatton",
+          "authorAssociation": "NONE",
+          "body": "This is ready to merge. I deleted the extra privacy consideration as I think it's covered by the current text.",
+          "createdAt": "2024-04-29T17:16:28Z",
+          "updatedAt": "2024-04-29T17:16:28Z"
         }
       ],
       "reviews": [
@@ -288,14 +302,14 @@
         {
           "id": "PRR_kwDOLYaY4c54wXi8",
           "commit": {
-            "abbreviatedOid": "a37a42a"
+            "abbreviatedOid": "0fbbc06"
           },
           "author": "wbl",
           "authorAssociation": "OWNER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-04-26T22:25:03Z",
-          "updatedAt": "2024-04-26T22:25:03Z",
+          "updatedAt": "2024-04-29T17:05:58Z",
           "comments": []
         }
       ]
