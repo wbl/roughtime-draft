@@ -25,7 +25,7 @@ time it is.
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.2.0
+    platformdirs 4.2.1
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1030,11 +1030,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Roughtime</td>
-<td class="right">April 2024</td>
+<td class="right">May 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ladd &amp; Dansarie</td>
-<td class="center">Expires 22 October 2024</td>
+<td class="center">Expires 14 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-ntp-roughtime-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-04-20" class="published">20 April 2024</time>
+<time datetime="2024-05-13" class="published">13 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-10-22">22 October 2024</time></dd>
+<dd class="expires"><time datetime="2024-11-14">14 November 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1102,7 +1102,7 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1183,6 +1183,9 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.2">
                     <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="auto internal xref">6.1.2</a>.  <a href="#name-nonc" class="internal xref">NONC</a></p>
 </li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.3">
+                    <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="auto internal xref">6.1.3</a>.  <a href="#name-srv" class="internal xref">SRV</a></p>
+</li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
@@ -1251,35 +1254,43 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-operational-considerations" class="internal xref">Operational Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
-                <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-service-name-and-transport-" class="internal xref">Service Name and Transport Protocol Port Number Registry</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
-                <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-roughtime-version-registry" class="internal xref">Roughtime Version Registry</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3">
-                <p id="section-toc.1-1.12.2.3.1"><a href="#section-12.3" class="auto internal xref">12.3</a>.  <a href="#name-roughtime-tag-registry" class="internal xref">Roughtime Tag Registry</a></p>
+                <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-multi-tenancy" class="internal xref">Multi-tenancy</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-references" class="internal xref">References</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
-                <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="auto internal xref">13.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+                <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="auto internal xref">13.1</a>.  <a href="#name-service-name-and-transport-" class="internal xref">Service Name and Transport Protocol Port Number Registry</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
-                <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="auto internal xref">13.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+                <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="auto internal xref">13.2</a>.  <a href="#name-roughtime-version-registry" class="internal xref">Roughtime Version Registry</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.3">
+                <p id="section-toc.1-1.13.2.3.1"><a href="#section-13.3" class="auto internal xref">13.3</a>.  <a href="#name-roughtime-tag-registry" class="internal xref">Roughtime Tag Registry</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
+                <p id="section-toc.1-1.14.2.1.1"><a href="#section-14.1" class="auto internal xref">14.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
+                <p id="section-toc.1-1.14.2.2.1"><a href="#section-14.2" class="auto internal xref">14.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1545,10 +1556,10 @@ draft number is used.<a href="#section-6-7" class="pilcrow">¶</a></p>
         <h3 id="name-requests">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-requests" class="section-name selfRef">Requests</a>
         </h3>
-<p id="section-6.1-1">A request <span class="bcp14">MUST</span> contain the tags VER and NONC. Tags other than NONC
-and VER <span class="bcp14">SHOULD</span> be ignored by the server. A future version of this
-protocol may mandate additional tags in the message and assign them
-semantic meaning.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-1">A request <span class="bcp14">MUST</span> contain the tags VER and NONC and SHOIULD include the
+tag SRV. Tags other than NONC and VER <span class="bcp14">SHOULD</span> be ignored by the server.
+A future version of this protocol may mandate additional tags in the
+message and assign them semantic meaning.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <p id="section-6.1-2">The size of the request message <span class="bcp14">SHOULD</span> be at least 1024 bytes when the
 UDP transport mode is used. To attain this size the ZZZZ tag <span class="bcp14">SHOULD</span> be
 added to the message. Its value <span class="bcp14">SHOULD</span> be all zeros. Responding to
@@ -1576,6 +1587,17 @@ in a manner indistinguishable from random. BCP 106 contains specific
 guidelines regarding this <span>[<a href="#RFC4086" class="cite xref">RFC4086</a>]</span>.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="srv">
+<section id="section-6.1.3">
+          <h4 id="name-srv">
+<a href="#section-6.1.3" class="section-number selfRef">6.1.3. </a><a href="#name-srv" class="section-name selfRef">SRV</a>
+          </h4>
+<p id="section-6.1.3-1">The SRV tag is used by the client to indicate which long-term public
+key it expects to verify the response with. The value of the SRV tag
+is <code>H(0xff || public_key)</code> where <code>public_key</code> is the server's
+long-lived, 32-byte Ed25519 public key.<a href="#section-6.1.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="responses">
@@ -1583,8 +1605,23 @@ guidelines regarding this <span>[<a href="#RFC4086" class="cite xref">RFC4086</a
         <h3 id="name-responses">
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-responses" class="section-name selfRef">Responses</a>
         </h3>
-<p id="section-6.2-1">A response <span class="bcp14">MUST</span> contain the tags SIG, VER, NONC, PATH, SREP, CERT,
- and INDX.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-1">The server begins the request handling process with a set of long-term
+keys. It resolves which long-term key to use with the following
+procedure:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-6.2-2">
+<li id="section-6.2-2.1">
+            <p id="section-6.2-2.1.1">If the request contains a SRV tag, then the server looks up the
+long-term key indicated by the SRV value. If no such key exists,
+then the server <span class="bcp14">MUST</span> ignore the request.<a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-6.2-2.2">
+            <p id="section-6.2-2.2.1">If the request contains no SRV tag, but the server has just one
+long-term key, then proceed with that key. Othwerise, if the server
+has multipile long-term keys, then it <span class="bcp14">MUST</span> ignore the request.<a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<p id="section-6.2-3">A response <span class="bcp14">MUST</span> contain the tags SIG, VER, NONC, PATH, SREP, CERT,
+ and INDX.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
 <div id="sig">
 <section id="section-6.2.1">
           <h4 id="name-sig">
@@ -1878,19 +1915,37 @@ can cause leaks of private data or enable tracking of clients as they
 move between networks.<a href="#section-11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="iana-considerations">
+<div id="operational-considerations">
 <section id="section-12">
+      <h2 id="name-operational-considerations">
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-operational-considerations" class="section-name selfRef">Operational Considerations</a>
+      </h2>
+<div id="multi-tenancy">
+<section id="section-12.1">
+        <h3 id="name-multi-tenancy">
+<a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-multi-tenancy" class="section-name selfRef">Multi-tenancy</a>
+        </h3>
+<p id="section-12.1-1">It is expected that clients identify a server by its long-term public
+key. Because multiple servers may be listening on the same IP or port
+space, the protocol is designed so that the client indicates which
+server it expects to respond. This is done with the SRV tag.<a href="#section-12.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-13">
       <h2 id="name-iana-considerations">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
 <div id="service-name-and-transport-protocol-port-number-registry">
-<section id="section-12.1">
+<section id="section-13.1">
         <h3 id="name-service-name-and-transport-">
-<a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-service-name-and-transport-" class="section-name selfRef">Service Name and Transport Protocol Port Number Registry</a>
+<a href="#section-13.1" class="section-number selfRef">13.1. </a><a href="#name-service-name-and-transport-" class="section-name selfRef">Service Name and Transport Protocol Port Number Registry</a>
         </h3>
-<p id="section-12.1-1">IANA is requested to allocate the following entry in the Service
-Name and Transport Protocol Port Number Registry:<a href="#section-12.1-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-12.1-2">
+<p id="section-13.1-1">IANA is requested to allocate the following entry in the Service
+Name and Transport Protocol Port Number Registry:<a href="#section-13.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-13.1-2">
 <pre>
   Service Name: Roughtime
 
@@ -1905,24 +1960,24 @@ Name and Transport Protocol Port Number Registry:<a href="#section-12.1-1" class
   Reference: [[this memo]]
 
   Port Number: [[TBD1]], selected by IANA from the User Port range
-</pre><a href="#section-12.1-2" class="pilcrow">¶</a>
+</pre><a href="#section-13.1-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="roughtime-version-registry">
-<section id="section-12.2">
+<section id="section-13.2">
         <h3 id="name-roughtime-version-registry">
-<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-roughtime-version-registry" class="section-name selfRef">Roughtime Version Registry</a>
+<a href="#section-13.2" class="section-number selfRef">13.2. </a><a href="#name-roughtime-version-registry" class="section-name selfRef">Roughtime Version Registry</a>
         </h3>
-<p id="section-12.2-1">IANA is requested to create a new registry entitled "Roughtime
- Version Registry".  Entries shall have the following fields:<a href="#section-12.2-1" class="pilcrow">¶</a></p>
-<p id="section-12.2-2">Version ID (<span class="bcp14">REQUIRED</span>): a 32-bit unsigned integer<a href="#section-12.2-2" class="pilcrow">¶</a></p>
-<p id="section-12.2-3">Version name (<span class="bcp14">REQUIRED</span>): A short text string naming the version being
-identified.<a href="#section-12.2-3" class="pilcrow">¶</a></p>
-<p id="section-12.2-4">Reference (<span class="bcp14">REQUIRED</span>): A reference to a relevant specification
-document.<a href="#section-12.2-4" class="pilcrow">¶</a></p>
-<p id="section-12.2-5">The policy for allocation of new entries <span class="bcp14">SHOULD</span> be: IETF Review.<a href="#section-12.2-5" class="pilcrow">¶</a></p>
-<p id="section-12.2-6">The initial contents of this registry shall be as follows:<a href="#section-12.2-6" class="pilcrow">¶</a></p>
+<p id="section-13.2-1">IANA is requested to create a new registry entitled "Roughtime
+ Version Registry".  Entries shall have the following fields:<a href="#section-13.2-1" class="pilcrow">¶</a></p>
+<p id="section-13.2-2">Version ID (<span class="bcp14">REQUIRED</span>): a 32-bit unsigned integer<a href="#section-13.2-2" class="pilcrow">¶</a></p>
+<p id="section-13.2-3">Version name (<span class="bcp14">REQUIRED</span>): A short text string naming the version being
+identified.<a href="#section-13.2-3" class="pilcrow">¶</a></p>
+<p id="section-13.2-4">Reference (<span class="bcp14">REQUIRED</span>): A reference to a relevant specification
+document.<a href="#section-13.2-4" class="pilcrow">¶</a></p>
+<p id="section-13.2-5">The policy for allocation of new entries <span class="bcp14">SHOULD</span> be: IETF Review.<a href="#section-13.2-5" class="pilcrow">¶</a></p>
+<p id="section-13.2-6">The initial contents of this registry shall be as follows:<a href="#section-13.2-6" class="pilcrow">¶</a></p>
 <table class="center" id="table-1">
           <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
 <thead>
@@ -1963,20 +2018,20 @@ document.<a href="#section-12.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="roughtime-tag-registry">
-<section id="section-12.3">
+<section id="section-13.3">
         <h3 id="name-roughtime-tag-registry">
-<a href="#section-12.3" class="section-number selfRef">12.3. </a><a href="#name-roughtime-tag-registry" class="section-name selfRef">Roughtime Tag Registry</a>
+<a href="#section-13.3" class="section-number selfRef">13.3. </a><a href="#name-roughtime-tag-registry" class="section-name selfRef">Roughtime Tag Registry</a>
         </h3>
-<p id="section-12.3-1">IANA is requested to create a new registry entitled "Roughtime Tag
-Registry".  Entries <span class="bcp14">SHALL</span> have the following fields:<a href="#section-12.3-1" class="pilcrow">¶</a></p>
-<p id="section-12.3-2">Tag (<span class="bcp14">REQUIRED</span>): A 32-bit unsigned integer in hexadecimal format.<a href="#section-12.3-2" class="pilcrow">¶</a></p>
-<p id="section-12.3-3">ASCII Representation (<span class="bcp14">OPTIONAL</span>): The ASCII representation of the tag
-in accordance with <a href="#type-tag" class="auto internal xref">Section 5.1.4</a> of this memo, if applicable.<a href="#section-12.3-3" class="pilcrow">¶</a></p>
-<p id="section-12.3-4">Reference (<span class="bcp14">REQUIRED</span>): A reference to a relevant specification
-document.<a href="#section-12.3-4" class="pilcrow">¶</a></p>
-<p id="section-12.3-5">The policy for allocation of new entries in this registry <span class="bcp14">SHOULD</span> be:
-Specification Required.<a href="#section-12.3-5" class="pilcrow">¶</a></p>
-<p id="section-12.3-6">The initial contents of this registry <span class="bcp14">SHALL</span> be as follows:<a href="#section-12.3-6" class="pilcrow">¶</a></p>
+<p id="section-13.3-1">IANA is requested to create a new registry entitled "Roughtime Tag
+Registry".  Entries <span class="bcp14">SHALL</span> have the following fields:<a href="#section-13.3-1" class="pilcrow">¶</a></p>
+<p id="section-13.3-2">Tag (<span class="bcp14">REQUIRED</span>): A 32-bit unsigned integer in hexadecimal format.<a href="#section-13.3-2" class="pilcrow">¶</a></p>
+<p id="section-13.3-3">ASCII Representation (<span class="bcp14">OPTIONAL</span>): The ASCII representation of the tag
+in accordance with <a href="#type-tag" class="auto internal xref">Section 5.1.4</a> of this memo, if applicable.<a href="#section-13.3-3" class="pilcrow">¶</a></p>
+<p id="section-13.3-4">Reference (<span class="bcp14">REQUIRED</span>): A reference to a relevant specification
+document.<a href="#section-13.3-4" class="pilcrow">¶</a></p>
+<p id="section-13.3-5">The policy for allocation of new entries in this registry <span class="bcp14">SHOULD</span> be:
+Specification Required.<a href="#section-13.3-5" class="pilcrow">¶</a></p>
+<p id="section-13.3-6">The initial contents of this registry <span class="bcp14">SHALL</span> be as follows:<a href="#section-13.3-6" class="pilcrow">¶</a></p>
 <table class="center" id="table-2">
           <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
 <thead>
@@ -1995,6 +2050,11 @@ Specification Required.<a href="#section-12.3-5" class="pilcrow">¶</a></p>
             <tr>
               <td class="text-right" rowspan="1" colspan="1">0x00474953</td>
               <td class="text-left" rowspan="1" colspan="1">SIG</td>
+              <td class="text-left" rowspan="1" colspan="1">[[this memo]]</td>
+            </tr>
+            <tr>
+              <td class="text-right" rowspan="1" colspan="1">0x00535256</td>
+              <td class="text-left" rowspan="1" colspan="1">SRV</td>
               <td class="text-left" rowspan="1" colspan="1">[[this memo]]</td>
             </tr>
             <tr>
@@ -2068,14 +2128,14 @@ Specification Required.<a href="#section-12.3-5" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<section id="section-13">
+<section id="section-14">
       <h2 id="name-references">
-<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-14" class="section-number selfRef">14. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-13.1">
+<section id="section-14.1">
         <h3 id="name-normative-references">
-<a href="#section-13.1" class="section-number selfRef">13.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-14.1" class="section-number selfRef">14.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC20">[RFC20]</dt>
@@ -2118,9 +2178,9 @@ Specification Required.<a href="#section-12.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-13.2">
+<section id="section-14.2">
         <h3 id="name-informative-references">
-<a href="#section-13.2" class="section-number selfRef">13.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-14.2" class="section-number selfRef">14.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC5905">[RFC5905]</dt>
