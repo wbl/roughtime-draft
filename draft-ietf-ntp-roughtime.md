@@ -170,7 +170,11 @@ natural bytewise order.
 
 ### Timestamp
 
-A timestamp is a uint64 count of seconds since the Unix epoch in UTC.
+A timestamp is a uint64 count of seconds since the Unix epoch assuming
+every day has 86400 seconds. This is a constant offset from the NTP
+timestamp in seconds. Leap seconds do not have an unambiguous representation
+in a timestamp, and this has implications for the attainable accuracy
+and setting of the RADI tag.
 
 ## Header
 
@@ -195,8 +199,7 @@ As described in {{protocol-overview}}, clients initiate time
 synchronization by sending requests containing a nonce to servers who
 send signed time responses in return. Roughtime packets can be sent
 between clients and servers either as UDP datagrams or via TCP
-streams. Servers SHOULD support the UDP transport mode, while TCP
-transport is OPTIONAL.
+streams. Servers SHOULD support the UDP transport mode and TCP mode.
 
 A Roughtime packet MUST be formatted according to {{figpack}} and as
 described here. The first field is a uint64 with the value
@@ -336,7 +339,10 @@ The MIDP tag value MUST be timestamp of the moment of processing.
 The RADI tag value MUST be a uint32 representing the server's estimate
 of the accuracy of MIDP in seconds. Servers MUST ensure that the true
 time is within (MIDP-RADI, MIDP+RADI) at the time they transmit the
-response message.
+response message. RADI MUST be at least 3 seconds.
+
+RADI is at least 3 seconds to ensure that leap seconds do not affect the
+observed correctness of roughtime servers.
 
 ### CERT
 
@@ -454,7 +460,7 @@ apply different rules.
 
 # Grease
 
-Servers MAY send back a fraction of responses that are syntactically
+Servers SHOULD send back a fraction of responses that are syntactically
 invalid or contain invalid signatures as well as incorrect
 times. Clients MUST properly reject such responses. Servers MUST NOT
 send back responses with incorrect times and valid signatures. Either
