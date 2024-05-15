@@ -53,8 +53,9 @@ the Network Time Protocol (NTP) {{?RFC5905}} lack essential security
 features, and even newer protocols like Network Time Security (NTS)
 {{?RFC8915}} lack mechanisms to ensure that the servers behave
 correctly. Furthermore, clients may lack even a basic idea of the
-time, creating bootstrapping problems. Roughtime uses a list of keys
-and servers to resolve this issue.
+time, creating bootstrapping problems. Roughtime is intended to permit
+devices to obtain a rough idea of the current time from fairly static
+configuration consisting of a key and a server.
 
 
 # Conventions and Definitions
