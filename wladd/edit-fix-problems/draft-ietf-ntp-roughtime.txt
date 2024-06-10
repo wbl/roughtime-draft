@@ -5,8 +5,8 @@
 Network Time Protocols                                           W. Ladd
 Internet-Draft                                       Akamai Technologies
 Intended status: Informational                               M. Dansarie
-Expires: 16 November 2024                                         Netnod
-                                                             15 May 2024
+Expires: 12 December 2024                                         Netnod
+                                                            10 June 2024
 
 
                                Roughtime
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 November 2024.
+   This Internet-Draft will expire on 12 December 2024.
 
 Copyright Notice
 
@@ -78,6 +78,7 @@ Table of Contents
        6.1.1.  VER
        6.1.2.  NONC
        6.1.3.  SRV
+       6.1.4.  ZZZZ
      6.2.  Responses
        6.2.1.  SIG
        6.2.2.  VER
@@ -260,6 +261,8 @@ Table of Contents
    be sorted in ascending order by numeric value.  A tag MUST NOT appear
    more than once in a header.
 
+   All lengths are lengths in bytes.
+
 6.  Protocol Details
 
    As described in Section 3, clients initiate time synchronization by
@@ -333,6 +336,8 @@ Table of Contents
    the request are not incompatible with each other or the packet
    contents.
 
+   The version numbers MUST not repeat.
+
 6.1.2.  NONC
 
    The value of the NONC tag is a 32 byte nonce.  It SHOULD be generated
@@ -344,7 +349,13 @@ Table of Contents
    The SRV tag is used by the client to indicate which long-term public
    key it expects to verify the response with.  The value of the SRV tag
    is H(0xff || public_key) where public_key is the server's long-lived,
-   32-byte Ed25519 public key.
+   32-byte Ed25519 public key and H is SHA512 truncated to the first 32
+   bytes.
+
+6.1.4.  ZZZZ
+
+   To expand the response to the minimum required length, the ZZZZ tag
+   is used.  Its value MUST be a string of all zeros.
 
 6.2.  Responses
 
@@ -487,6 +498,8 @@ Table of Contents
    of INDX MUST be zero at that time.  Otherwise, let node be the next
    32 bytes in PATH.  If the current bit in INDX is 0 then hash =
    H(0x01 || node || hash), else hash = H(0x01 || hash || node).
+
+   PATH is thus the siblings from the leaf to the root.
 
 6.4.  Validity of Response
 
