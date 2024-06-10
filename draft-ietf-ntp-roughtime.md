@@ -194,6 +194,8 @@ in the same order as the offsets of their values and MUST also be
 sorted in ascending order by numeric value. A tag MUST NOT appear more
 than once in a header.
 
+All lengths are lengths in bytes.
+
 # Protocol Details
 
 As described in {{protocol-overview}}, clients initiate time
@@ -267,6 +269,8 @@ client. The client MUST ensure that the version numbers and tags
 included in the request are not incompatible with each other or the
 packet contents.
 
+The version numbers MUST not repeat.
+
 ### NONC
 
 The value of the NONC tag is a 32 byte nonce. It SHOULD be generated
@@ -278,7 +282,14 @@ guidelines regarding this {{!RFC4086}}.
 The SRV tag is used by the client to indicate which long-term public
 key it expects to verify the response with. The value of the SRV tag
 is `H(0xff || public_key)` where `public_key` is the server's
-long-lived, 32-byte Ed25519 public key.
+long-lived, 32-byte Ed25519 public key and H is SHA512 truncated to
+the first 32 bytes.
+
+### ZZZZ
+
+To expand the response to the minimum required length,
+the ZZZZ tag is used. Its value MUST be a string of all
+zeros.
 
 ## Responses
 
@@ -419,6 +430,8 @@ current hash is the hash of the Merkle tree. All remaining bits of
 INDX MUST be zero at that time. Otherwise, let node be the next 32
 bytes in PATH. If the current bit in INDX is 0 then `hash = H(0x01 ||
 node || hash)`, else `hash = H(0x01 || hash || node)`.
+
+PATH is thus the siblings from the leaf to the root.
 
 ## Validity of Response
 
