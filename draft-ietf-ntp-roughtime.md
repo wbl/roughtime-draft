@@ -631,7 +631,7 @@ The initial contents of this registry SHALL be as follows:
 
 | Tag | ASCII Representation | Reference   |
 +-----:+------------------+--------------|
-| 0x7a7a7a7a | ZZZZ                 | [[this memo]] |
+| 0x5a5a5a5a | ZZZZ                 | [[this memo]] |
 | 0x00474953 | SIG                  | [[this memo]] |
 | 0x00535256 | SRV                  | [[this memo]] |
 | 0x00524556 | VER                  | [[this memo]] |
