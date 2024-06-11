@@ -1564,7 +1564,7 @@ draft number is used.<a href="#section-6-7" class="pilcrow">¶</a></p>
         <h3 id="name-requests">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-requests" class="section-name selfRef">Requests</a>
         </h3>
-<p id="section-6.1-1">A request <span class="bcp14">MUST</span> contain the tags VER and NONC and SHOIULD include the
+<p id="section-6.1-1">A request <span class="bcp14">MUST</span> contain the tags VER and NONC and <span class="bcp14">SHOULD</span> include the
 tag SRV. Tags other than NONC and VER <span class="bcp14">SHOULD</span> be ignored by the server.
 A future version of this protocol may mandate additional tags in the
 message and assign them semantic meaning.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
@@ -1636,8 +1636,8 @@ then the server <span class="bcp14">MUST</span> ignore the request.<a href="#sec
 </li>
           <li id="section-6.2-2.2">
             <p id="section-6.2-2.2.1">If the request contains no SRV tag, but the server has just one
-long-term key, then proceed with that key. Othwerise, if the server
-has multipile long-term keys, then it <span class="bcp14">MUST</span> ignore the request.<a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
+long-term key, then proceed with that key. Otherwise, if the server
+has multiple long-term keys, then it <span class="bcp14">MUST</span> ignore the request.<a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <p id="section-6.2-3">A response <span class="bcp14">MUST</span> contain the tags SIG, VER, NONC, PATH, SREP, CERT,
@@ -1696,7 +1696,7 @@ only the root node, the size of PATH <span class="bcp14">MUST</span> be zero.<a 
 message with the tags ROOT, MIDP, and RADI.<a href="#section-6.2.5-1" class="pilcrow">¶</a></p>
 <p id="section-6.2.5-2">The ROOT tag <span class="bcp14">MUST</span> contain a 32 byte value of a Merkle tree root as
 described in <a href="#merkle-tree" class="auto internal xref">Section 6.3</a>.<a href="#section-6.2.5-2" class="pilcrow">¶</a></p>
-<p id="section-6.2.5-3">The MIDP tag value <span class="bcp14">MUST</span> be timestamp of the moment of processing.<a href="#section-6.2.5-3" class="pilcrow">¶</a></p>
+<p id="section-6.2.5-3">The MIDP tag value <span class="bcp14">MUST</span> be the timestamp of the moment of processing.<a href="#section-6.2.5-3" class="pilcrow">¶</a></p>
 <p id="section-6.2.5-4">The RADI tag value <span class="bcp14">MUST</span> be a uint32 representing the server's estimate
 of the accuracy of MIDP in seconds. Servers <span class="bcp14">MUST</span> ensure that the true
 time is within (MIDP-RADI, MIDP+RADI) at the time they transmit the
@@ -1764,7 +1764,7 @@ of the response.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
 <p id="section-6.3-5">The index of a request's nonce node is included in the INDX tag of the
 response.<a href="#section-6.3-5" class="pilcrow">¶</a></p>
 <p id="section-6.3-6">The values of all sibling nodes in the path between a
-request's nonce node and the root node is stored in the PATH tag so
+request's nonce node and the root node are stored in the PATH tag so
 that the client can reconstruct and validate the value in the ROOT tag
 using its nonce. These values are each 32 bytes and are stored one
 after the other with no additional padding or structure. The order in
