@@ -351,9 +351,9 @@ The MIDP tag value MUST be timestamp of the moment of processing.
 The RADI tag value MUST be a uint32 representing the server's estimate
 of the accuracy of MIDP in seconds. Servers MUST ensure that the true
 time is within (MIDP-RADI, MIDP+RADI) at the time they transmit the
-response message. RADI MUST be at least 3 seconds.
+response message.
 
-RADI is at least 3 seconds to ensure that leap seconds do not affect the
+The value of the RADI tag MUST be at least 3 seconds. Otherwise leap seconds will impact the
 observed correctness of roughtime servers.
 
 ### CERT
