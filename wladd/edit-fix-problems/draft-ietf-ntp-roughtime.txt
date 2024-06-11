@@ -5,8 +5,8 @@
 Network Time Protocols                                           W. Ladd
 Internet-Draft                                       Akamai Technologies
 Intended status: Informational                               M. Dansarie
-Expires: 12 December 2024                                         Netnod
-                                                            10 June 2024
+Expires: 13 December 2024                                         Netnod
+                                                            11 June 2024
 
 
                                Roughtime
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 December 2024.
+   This Internet-Draft will expire on 13 December 2024.
 
 Copyright Notice
 
@@ -419,10 +419,10 @@ Table of Contents
    The RADI tag value MUST be a uint32 representing the server's
    estimate of the accuracy of MIDP in seconds.  Servers MUST ensure
    that the true time is within (MIDP-RADI, MIDP+RADI) at the time they
-   transmit the response message.  RADI MUST be at least 3 seconds.
+   transmit the response message.
 
-   RADI is at least 3 seconds to ensure that leap seconds do not affect
-   the observed correctness of roughtime servers.
+   The value of the RADI tag MUST be at least 3 seconds.  Otherwise leap
+   seconds will impact the observed correctness of roughtime servers.
 
 6.2.6.  CERT
 
