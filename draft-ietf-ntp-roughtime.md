@@ -250,7 +250,7 @@ draft number is used.
 
 ## Requests
 
-A request MUST contain the tags VER and NONC and SHOIULD include the
+A request MUST contain the tags VER and NONC and SHOULD include the
 tag SRV. Tags other than NONC and VER SHOULD be ignored by the server.
 A future version of this protocol may mandate additional tags in the
 message and assign them semantic meaning.
@@ -302,8 +302,8 @@ procedure:
    then the server MUST ignore the request.
 
 1. If the request contains no SRV tag, but the server has just one
-   long-term key, then proceed with that key. Othwerise, if the server
-   has multipile long-term keys, then it MUST ignore the request.
+   long-term key, then proceed with that key. Otherwise, if the server
+   has multiple long-term keys, then it MUST ignore the request.
 
  A response MUST contain the tags SIG, VER, NONC, PATH, SREP, CERT,
  and INDX.
@@ -346,7 +346,7 @@ message with the tags ROOT, MIDP, and RADI.
 The ROOT tag MUST contain a 32 byte value of a Merkle tree root as
 described in {{merkle-tree}}.
 
-The MIDP tag value MUST be timestamp of the moment of processing.
+The MIDP tag value MUST be the timestamp of the moment of processing.
 
 The RADI tag value MUST be a uint32 representing the server's estimate
 of the accuracy of MIDP in seconds. Servers MUST ensure that the true
@@ -411,7 +411,7 @@ The index of a request's nonce node is included in the INDX tag of the
 response.
 
 The values of all sibling nodes in the path between a
-request's nonce node and the root node is stored in the PATH tag so
+request's nonce node and the root node are stored in the PATH tag so
 that the client can reconstruct and validate the value in the ROOT tag
 using its nonce. These values are each 32 bytes and are stored one
 after the other with no additional padding or structure. The order in
