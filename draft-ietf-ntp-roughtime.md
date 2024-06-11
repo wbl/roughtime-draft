@@ -53,8 +53,9 @@ the Network Time Protocol (NTP) {{?RFC5905}} lack essential security
 features, and even newer protocols like Network Time Security (NTS)
 {{?RFC8915}} lack mechanisms to ensure that the servers behave
 correctly. Furthermore, clients may lack even a basic idea of the
-time, creating bootstrapping problems. Roughtime uses a list of keys
-and servers to resolve this issue.
+time, creating bootstrapping problems. Roughtime is intended to permit
+devices to obtain a rough idea of the current time from fairly static
+configuration consisting of a key and a server.
 
 
 # Conventions and Definitions
@@ -170,7 +171,11 @@ natural bytewise order.
 
 ### Timestamp
 
-A timestamp is a uint64 count of seconds since the Unix epoch in UTC.
+A timestamp is a uint64 count of seconds since the Unix epoch assuming
+every day has 86400 seconds. This is a constant offset from the NTP
+timestamp in seconds. Leap seconds do not have an unambiguous representation
+in a timestamp, and this has implications for the attainable accuracy
+and setting of the RADI tag.
 
 ## Header
 
@@ -189,14 +194,15 @@ in the same order as the offsets of their values and MUST also be
 sorted in ascending order by numeric value. A tag MUST NOT appear more
 than once in a header.
 
+All lengths are lengths in bytes.
+
 # Protocol Details
 
 As described in {{protocol-overview}}, clients initiate time
 synchronization by sending requests containing a nonce to servers who
 send signed time responses in return. Roughtime packets can be sent
 between clients and servers either as UDP datagrams or via TCP
-streams. Servers SHOULD support the UDP transport mode, while TCP
-transport is OPTIONAL.
+streams. Servers SHOULD support the UDP transport mode and TCP mode.
 
 A Roughtime packet MUST be formatted according to {{figpack}} and as
 described here. The first field is a uint64 with the value
@@ -263,6 +269,8 @@ client. The client MUST ensure that the version numbers and tags
 included in the request are not incompatible with each other or the
 packet contents.
 
+The version numbers MUST not repeat.
+
 ### NONC
 
 The value of the NONC tag is a 32 byte nonce. It SHOULD be generated
@@ -274,7 +282,14 @@ guidelines regarding this {{!RFC4086}}.
 The SRV tag is used by the client to indicate which long-term public
 key it expects to verify the response with. The value of the SRV tag
 is `H(0xff || public_key)` where `public_key` is the server's
-long-lived, 32-byte Ed25519 public key.
+long-lived, 32-byte Ed25519 public key and H is SHA512 truncated to
+the first 32 bytes.
+
+### ZZZZ
+
+To expand the response to the minimum required length,
+the ZZZZ tag is used. Its value MUST be a string of all
+zeros.
 
 ## Responses
 
@@ -337,6 +352,9 @@ The RADI tag value MUST be a uint32 representing the server's estimate
 of the accuracy of MIDP in seconds. Servers MUST ensure that the true
 time is within (MIDP-RADI, MIDP+RADI) at the time they transmit the
 response message.
+
+The value of the RADI tag MUST be at least 3 seconds. Otherwise leap seconds will impact the
+observed correctness of roughtime servers.
 
 ### CERT
 
@@ -413,6 +431,8 @@ INDX MUST be zero at that time. Otherwise, let node be the next 32
 bytes in PATH. If the current bit in INDX is 0 then `hash = H(0x01 ||
 node || hash)`, else `hash = H(0x01 || hash || node)`.
 
+PATH is thus the siblings from the leaf to the root.
+
 ## Validity of Response
 
 A client MUST check the following properties when it receives a
@@ -454,7 +474,7 @@ apply different rules.
 
 # Grease
 
-Servers MAY send back a fraction of responses that are syntactically
+Servers SHOULD send back a fraction of responses that are syntactically
 invalid or contain invalid signatures as well as incorrect
 times. Clients MUST properly reject such responses. Servers MUST NOT
 send back responses with incorrect times and valid signatures. Either
