@@ -5,8 +5,8 @@
 Network Time Protocols                                           W. Ladd
 Internet-Draft                                       Akamai Technologies
 Intended status: Informational                               M. Dansarie
-Expires: 14 November 2024                                         Netnod
-                                                             13 May 2024
+Expires: 13 December 2024                                         Netnod
+                                                            11 June 2024
 
 
                                Roughtime
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 November 2024.
+   This Internet-Draft will expire on 13 December 2024.
 
 Copyright Notice
 
@@ -78,6 +78,7 @@ Table of Contents
        6.1.1.  VER
        6.1.2.  NONC
        6.1.3.  SRV
+       6.1.4.  ZZZZ
      6.2.  Responses
        6.2.1.  SIG
        6.2.2.  VER
@@ -118,8 +119,9 @@ Table of Contents
    features, and even newer protocols like Network Time Security (NTS)
    [RFC8915] lack mechanisms to ensure that the servers behave
    correctly.  Furthermore, clients may lack even a basic idea of the
-   time, creating bootstrapping problems.  Roughtime uses a list of keys
-   and servers to resolve this issue.
+   time, creating bootstrapping problems.  Roughtime is intended to
+   permit devices to obtain a rough idea of the current time from fairly
+   static configuration consisting of a key and a server.
 
 2.  Conventions and Definitions
 
@@ -236,7 +238,11 @@ Table of Contents
 
 5.1.5.  Timestamp
 
-   A timestamp is a uint64 count of seconds since the Unix epoch in UTC.
+   A timestamp is a uint64 count of seconds since the Unix epoch
+   assuming every day has 86400 seconds.  This is a constant offset from
+   the NTP timestamp in seconds.  Leap seconds do not have an
+   unambiguous representation in a timestamp, and this has implications
+   for the attainable accuracy and setting of the RADI tag.
 
 5.2.  Header
 
@@ -255,14 +261,15 @@ Table of Contents
    be sorted in ascending order by numeric value.  A tag MUST NOT appear
    more than once in a header.
 
+   All lengths are lengths in bytes.
+
 6.  Protocol Details
 
    As described in Section 3, clients initiate time synchronization by
    sending requests containing a nonce to servers who send signed time
    responses in return.  Roughtime packets can be sent between clients
    and servers either as UDP datagrams or via TCP streams.  Servers
-   SHOULD support the UDP transport mode, while TCP transport is
-   OPTIONAL.
+   SHOULD support the UDP transport mode and TCP mode.
 
    A Roughtime packet MUST be formatted according to Figure 2 and as
    described here.  The first field is a uint64 with the value
@@ -329,6 +336,8 @@ Table of Contents
    the request are not incompatible with each other or the packet
    contents.
 
+   The version numbers MUST not repeat.
+
 6.1.2.  NONC
 
    The value of the NONC tag is a 32 byte nonce.  It SHOULD be generated
@@ -340,7 +349,13 @@ Table of Contents
    The SRV tag is used by the client to indicate which long-term public
    key it expects to verify the response with.  The value of the SRV tag
    is H(0xff || public_key) where public_key is the server's long-lived,
-   32-byte Ed25519 public key.
+   32-byte Ed25519 public key and H is SHA512 truncated to the first 32
+   bytes.
+
+6.1.4.  ZZZZ
+
+   To expand the response to the minimum required length, the ZZZZ tag
+   is used.  Its value MUST be a string of all zeros.
 
 6.2.  Responses
 
@@ -405,6 +420,9 @@ Table of Contents
    estimate of the accuracy of MIDP in seconds.  Servers MUST ensure
    that the true time is within (MIDP-RADI, MIDP+RADI) at the time they
    transmit the response message.
+
+   The value of the RADI tag MUST be at least 3 seconds.  Otherwise leap
+   seconds will impact the observed correctness of roughtime servers.
 
 6.2.6.  CERT
 
@@ -481,6 +499,8 @@ Table of Contents
    32 bytes in PATH.  If the current bit in INDX is 0 then hash =
    H(0x01 || node || hash), else hash = H(0x01 || hash || node).
 
+   PATH is thus the siblings from the leaf to the root.
+
 6.4.  Validity of Response
 
    A client MUST check the following properties when it receives a
@@ -522,11 +542,11 @@ Table of Contents
 
 8.  Grease
 
-   Servers MAY send back a fraction of responses that are syntactically
-   invalid or contain invalid signatures as well as incorrect times.
-   Clients MUST properly reject such responses.  Servers MUST NOT send
-   back responses with incorrect times and valid signatures.  Either
-   signature MAY be invalid for this application.
+   Servers SHOULD send back a fraction of responses that are
+   syntactically invalid or contain invalid signatures as well as
+   incorrect times.  Clients MUST properly reject such responses.
+   Servers MUST NOT send back responses with incorrect times and valid
+   signatures.  Either signature MAY be invalid for this application.
 
 9.  Roughtime Clients
 
