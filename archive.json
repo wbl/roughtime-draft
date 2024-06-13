@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-11T00:42:00.278946+00:00",
+  "timestamp": "2024-06-13T00:41:43.530211+00:00",
   "repo": "wbl/roughtime-draft",
   "labels": [
     {
@@ -87,6 +87,22 @@
       "body": "https://github.com/wbl/roughtime-draft/blob/695381624a2478973d7f090dc60725746a4433d8/draft-ietf-ntp-roughtime.md?plain=1#L537\r\n\r\n\"ZZZZ\" is 0x5a5a5a5a in hex, not 0x7a7a7a7a. This is \"zzzz\".\r\n\r\nThe intention is probably \"ZZZZ\", so the table should be updated to 0x5a5a5a5a.",
       "createdAt": "2024-04-12T19:35:00Z",
       "updatedAt": "2024-04-12T19:35:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOLYaY4c6L5KSq",
+      "title": "Fix GitHub Repository link in Additional Resources on datatracker",
+      "url": "https://github.com/wbl/roughtime-draft/issues/6",
+      "state": "OPEN",
+      "author": "lukevalenta",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The GitHub repo linked in the additional resources section of https://datatracker.ietf.org/doc/draft-ietf-ntp-roughtime/ is still https://github.com/aanchal4/draft-roughtime, but should be updated to this repo.",
+      "createdAt": "2024-06-11T18:15:23Z",
+      "updatedAt": "2024-06-11T18:15:23Z",
       "closedAt": null,
       "comments": []
     }
@@ -383,24 +399,26 @@
       "id": "PR_kwDOLYaY4c5vkKh0",
       "title": "Wladd/edit fix problems",
       "url": "https://github.com/wbl/roughtime-draft/pull/5",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "wbl",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-05-15T18:02:52Z",
-      "updatedAt": "2024-06-10T22:54:37Z",
+      "updatedAt": "2024-06-11T17:49:33Z",
       "baseRepository": "wbl/roughtime-draft",
       "baseRefName": "main",
       "baseRefOid": "243e6e16a941d8b0ee77292d13dbd165103a2665",
       "headRepository": "wbl/roughtime-draft",
       "headRefName": "wladd/edit-fix-problems",
-      "headRefOid": "b5525bb10c8f9301959e59570d276fd18950af36",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "4be47c837ac36c41bcd9b75878db7a1a9de9d9a2",
+      "closedAt": "2024-06-11T17:49:33Z",
+      "mergedAt": "2024-06-11T17:49:33Z",
+      "mergedBy": "wbl",
+      "mergeCommit": {
+        "oid": "0db7e872c3f13903b46291868885e627207eccf2"
+      },
       "comments": [],
       "reviews": [
         {
@@ -454,6 +472,56 @@
               "updatedAt": "2024-06-10T22:54:37Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOLYaY4c5yJSRJ",
+      "title": "Fix draft 10 typos",
+      "url": "https://github.com/wbl/roughtime-draft/pull/7",
+      "state": "MERGED",
+      "author": "lukevalenta",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-06-11T18:28:18Z",
+      "updatedAt": "2024-06-11T18:37:46Z",
+      "baseRepository": "wbl/roughtime-draft",
+      "baseRefName": "main",
+      "baseRefOid": "32dfd4b33c69799f563c2bf856ea861cfea29b13",
+      "headRepository": "lukevalenta/roughtime-draft",
+      "headRefName": "patch-1",
+      "headRefOid": "297bbfbccbe70d98e6bbb6e0fae3a1d553c111fd",
+      "closedAt": "2024-06-11T18:37:37Z",
+      "mergedAt": "2024-06-11T18:37:37Z",
+      "mergedBy": "wbl",
+      "mergeCommit": {
+        "oid": "cdcabb932b975a9b9ce34e15d5f6e196c981af64"
+      },
+      "comments": [
+        {
+          "author": "wbl",
+          "authorAssociation": "OWNER",
+          "body": "Thanks! will hold off on an 11",
+          "createdAt": "2024-06-11T18:37:45Z",
+          "updatedAt": "2024-06-11T18:37:45Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLYaY4c591kYC",
+          "commit": {
+            "abbreviatedOid": "297bbfb"
+          },
+          "author": "wbl",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-11T18:37:29Z",
+          "updatedAt": "2024-06-11T18:37:29Z",
+          "comments": []
         }
       ]
     }
