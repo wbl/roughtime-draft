@@ -171,30 +171,34 @@ natural bytewise order.
 
 ### Timestamp
 
-A timestamp is a uint64 count of seconds since the Unix epoch assuming
+A timestamp is a representation of UTC time as a uint64 count of
+seconds since 00:00:00 on 1 January 1970 (the Unix epoch), assuming
 every day has 86400 seconds. This is a constant offset from the NTP
-timestamp in seconds. Leap seconds do not have an unambiguous representation
-in a timestamp, and this has implications for the attainable accuracy
-and setting of the RADI tag.
+timestamp in seconds. Leap seconds do not have an unambiguous
+representation in a timestamp, and this has implications for the
+attainable accuracy and setting of the RADI tag.
 
 ## Header
 
 All Roughtime messages start with a header. The first four bytes of
 the header is the uint32 number of tags N, and hence of (tag, value)
-pairs. The following 4\*(N-1) bytes are offsets, each a uint32. The
-last 4\*N bytes in the header are tags.  Offsets refer to the positions
-of the values in the message values section. All offsets MUST be
-multiples of four and placed in increasing order. The first
-post-header byte is at offset 0. The offset array is considered to
-have a not explicitly encoded value of 0 as its zeroth entry. The
-value associated with the ith tag begins at offset[i] and ends at
-offset[i+1]-1, with the exception of the last value which ends at the
-end of the message. Values may have zero length. Tags MUST be listed
-in the same order as the offsets of their values and MUST also be
-sorted in ascending order by numeric value. A tag MUST NOT appear more
-than once in a header.
+pairs.
 
-All lengths are lengths in bytes.
+The following 4\*(N-1) bytes are offsets, each a uint32. The last 4\*N
+bytes in the header are tags.  Offsets refer to the positions of the
+values in the message values section. All offsets MUST be multiples of
+four and placed in increasing order. The first post-header byte is at
+offset 0. The offset array is considered to have a not explicitly
+encoded value of 0 as its zeroth entry.
+
+The value associated with the ith tag begins at offset[i] and ends at
+offset[i+1]-1, with the exception of the last value which ends at the
+end of the message. Values may have zero length. All lengths and
+offsets are in bytes.
+
+Tags MUST be listed in the same order as the offsets of their values
+and MUST also be sorted in ascending order by numeric value. A tag
+MUST NOT appear more than once in a header.
 
 # Protocol Details
 
@@ -250,16 +254,16 @@ draft number is used.
 
 ## Requests
 
-A request MUST contain the tags VER and NONC and SHOULD include the
-tag SRV. Tags other than NONC and VER SHOULD be ignored by the server.
-A future version of this protocol may mandate additional tags in the
-message and assign them semantic meaning.
+A request MUST contain the tags VER and NONC. It SHOULD include the
+tag SRV. Other tags SHOULD be ignored by the server. A future version
+of this protocol may mandate additional tags in the message and assign
+them semantic meaning.
 
 The size of the request message SHOULD be at least 1024 bytes when the
 UDP transport mode is used. To attain this size the ZZZZ tag SHOULD be
-added to the message. Its value SHOULD be all zeros. Responding to
-requests shorter than 1024 bytes is OPTIONAL and servers MUST NOT send
-responses larger than the requests they are replying to.
+added to the message. Responding to requests shorter than 1024 bytes
+is OPTIONAL and servers MUST NOT send responses larger than the
+requests they are replying to.
 
 ### VER
 
@@ -269,7 +273,7 @@ client. The client MUST ensure that the version numbers and tags
 included in the request are not incompatible with each other or the
 packet contents.
 
-The version numbers MUST not repeat.
+The version numbers MUST NOT repeat.
 
 ### NONC
 
@@ -282,14 +286,13 @@ guidelines regarding this {{!RFC4086}}.
 The SRV tag is used by the client to indicate which long-term public
 key it expects to verify the response with. The value of the SRV tag
 is `H(0xff || public_key)` where `public_key` is the server's
-long-lived, 32-byte Ed25519 public key and H is SHA512 truncated to
+long-term, 32-byte Ed25519 public key and H is SHA512 truncated to
 the first 32 bytes.
 
 ### ZZZZ
 
-To expand the response to the minimum required length,
-the ZZZZ tag is used. Its value MUST be a string of all
-zeros.
+The ZZZZ tag is used to expand the response to the minimum required
+length. Its value MUST be a string of all zeros.
 
 ## Responses
 
@@ -302,7 +305,7 @@ procedure:
    then the server MUST ignore the request.
 
 1. If the request contains no SRV tag, but the server has just one
-   long-term key, then proceed with that key. Otherwise, if the server
+   long-term key, it SHOULD select that key. Otherwise, if the server
    has multiple long-term keys, then it MUST ignore the request.
 
  A response MUST contain the tags SIG, VER, NONC, PATH, SREP, CERT,
@@ -354,7 +357,7 @@ time is within (MIDP-RADI, MIDP+RADI) at the time they transmit the
 response message.
 
 The value of the RADI tag MUST be at least 3 seconds. Otherwise leap seconds will impact the
-observed correctness of roughtime servers.
+observed correctness of Roughtime servers.
 
 ### CERT
 
@@ -419,13 +422,13 @@ which they are stored is described in the next section.
 
 ### Root Value Validity Check Algorithm {#check-algorithm}
 
-We describe how to compute the root hash of the Merkle tree from the
-values in the tags PATH, INDX, and NONC. The bits of INDX are ordered
-from least to most significant. `H(x)` denotes the first 32 bytes of
-the SHA-512 hash digest of x and `||` denotes concatenation.
+This section describes how to compute the root hash of the Merkle tree
+from the values in the tags PATH, INDX, and NONC. The bits of INDX are
+ordered from least to most significant. `H(x)` denotes the first 32
+bytes of the SHA-512 hash digest of x and `||` denotes concatenation.
 
-Our algorithm maintains a current hash value. At initialization, hash
-is set to `H(0x00 || nonce)`. If no more entries remain in PATH the
+The algorithm maintains a current hash value. At initialization, hash
+is set to `H(0x00 || nonce)`. When no more entries remain in PATH, the
 current hash is the hash of the Merkle tree. All remaining bits of
 INDX MUST be zero at that time. Otherwise, let node be the next 32
 bytes in PATH. If the current bit in INDX is 0 then `hash = H(0x01 ||
@@ -484,7 +487,7 @@ signature MAY be invalid for this application.
 
 ## Necessary configuration
 
-To carry out a Roughtime measurement a client must be equipped with a
+To carry out a Roughtime measurement, a client must be equipped with a
 list of servers, a minimum of three of which are operational, not run
 by the same parties. It must also have a means of reporting to the
 provider of such a list, such as an OS vendor or software vendor, a
@@ -505,10 +508,10 @@ and make another measurement.
 
 ## Malfeasence reporting
 
-A malfeasance report is a JSON {{!RFC8259}} object with keys "nonces"
-containing an array of the rand values as base64 {{!RFC4648}} encoded
-strings and "responses" containing an array of the responses as base64
-encoded strings.
+A malfeasance report is a JSON {{!RFC8259}} object with keys "nonces",
+containing an array of the rand values as base64-encoded {{!RFC4648}}
+strings, and "responses", containing an array of the responses as
+base64-encoded strings.
 
 Malfeasence reports MAY be transported by any means to the relevant
 vendor or server operator for discussion. A malfeasance report is
@@ -537,7 +540,7 @@ clients, and thus may experience vulnerability to denial of service
 attacks.
 
 This protocol does not provide any confidentiality. Given the nature
-of timestamps such impact is minor.
+of timestamps, such impact is minor.
 
 The compromise of a PUBK's private key, even past MAXT, is a problem
 as the private key can be used to sign invalid times that are in the
@@ -557,12 +560,11 @@ move between networks.
 
 # Operational Considerations
 
-## Multi-tenancy
-
 It is expected that clients identify a server by its long-term public
-key. Because multiple servers may be listening on the same IP or port
-space, the protocol is designed so that the client indicates which
-server it expects to respond. This is done with the SRV tag.
+key. In multi-tenancy environments, where multiple servers may be
+listening on the same IP or port space, the protocol is designed so
+that the client indicates which server it expects to respond. This is
+done with the SRV tag.
 
 # IANA Considerations
 
@@ -631,7 +633,6 @@ The initial contents of this registry SHALL be as follows:
 
 | Tag | ASCII Representation | Reference   |
 +-----:+------------------+--------------|
-| 0x5a5a5a5a | ZZZZ                 | [[this memo]] |
 | 0x00474953 | SIG                  | [[this memo]] |
 | 0x00535256 | SRV                  | [[this memo]] |
 | 0x00524556 | VER                  | [[this memo]] |
@@ -647,6 +648,7 @@ The initial contents of this registry SHALL be as follows:
 | 0x54524543 | CERT                 | [[this memo]] |
 | 0x5458414d | MAXT                 | [[this memo]] |
 | 0x58444e49 | INDX                 | [[this memo]] |
+| 0x5a5a5a5a | ZZZZ                 | [[this memo]] |
 
 
 --- back
@@ -654,6 +656,7 @@ The initial contents of this registry SHALL be as follows:
 # Acknowledgments
 {:numbered="false"}
 
+Aanchal Malhotra and Adam Langley authored early drafts of this memo.
 Thomas Peterson corrected multiple nits. Peter Löthberg, Tal Mizrahi,
 Ragnar Sundblad, Kristof Teichel, and the other members of the NTP
 working group contributed comments and suggestions.
