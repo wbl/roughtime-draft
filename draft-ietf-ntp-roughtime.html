@@ -1034,7 +1034,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ladd &amp; Dansarie</td>
-<td class="center">Expires 18 December 2024</td>
+<td class="center">Expires 19 December 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-ntp-roughtime-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-06-16" class="published">16 June 2024</time>
+<time datetime="2024-06-17" class="published">17 June 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-12-18">18 December 2024</time></dd>
+<dd class="expires"><time datetime="2024-12-19">19 December 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1102,7 +1102,7 @@ time it is.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1359,8 +1359,8 @@ t<sub>1</sub>, received at t<sub>2</sub>, and with timestamp
 t<sub>3</sub> has been created between t<sub>1</sub> and
 t<sub>2</sub>. If t<sub>3</sub> is not within that interval, a server
 inconsistency may be detected and used to impeach the server. The
-propagation of such a guarantee and its use of type synchronization is
-discussed in <a href="#integration-into-ntp" class="auto internal xref">Section 7</a>. No delay attacker may affect
+propagation of such a guarantee and its use for time synchronization
+is discussed in <a href="#integration-into-ntp" class="auto internal xref">Section 7</a>. No delay attacker may affect
 this: they may only expand the interval between t<sub>1</sub> and
 t<sub>2</sub>, or of course stop the measurement in the first place.<a href="#section-4-1" class="pilcrow">¶</a></p>
 </section>
@@ -1452,13 +1452,14 @@ significant byte first.<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
 <a href="#section-5.1.4" class="section-number selfRef">5.1.4. </a><a href="#name-tag" class="section-name selfRef">Tag</a>
           </h4>
 <p id="section-5.1.4-1">Tags are used to identify values in Roughtime messages. A tag is a
-uint32 but may also be listed in this document as a sequence of up to
-four ASCII characters <span>[<a href="#RFC20" class="cite xref">RFC20</a>]</span>. ASCII strings shorter than four
-characters can be unambiguously converted to tags by padding them with
-zero bytes. For example, the ASCII string "NONC" would correspond to
-the tag 0x434e4f4e and "ZZZZ" would correspond to 0x5a5a5a5a. Note
-that when encoded into a message the ASCII values will be in the
-natural bytewise order.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
+uint32 but can also be represented as a sequence of up to four ASCII
+characters <span>[<a href="#RFC20" class="cite xref">RFC20</a>]</span>. ASCII strings shorter than four characters can
+be unambiguously converted to tags by padding them with zero bytes.
+Tags <span class="bcp14">MUST NOT</span> contain any other bytes than capital letters (A-Z) or
+padding zero bytes. For example, the ASCII string "NONC" would
+correspond to the tag 0x434e4f4e and "ZZZZ" would correspond to
+0x5a5a5a5a. Note that when encoded into a message the ASCII values
+will be in the natural bytewise order.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="timestamp">
@@ -2038,7 +2039,7 @@ document.<a href="#section-13.2-4" class="pilcrow">¶</a></p>
 <p id="section-13.3-1">IANA is requested to create a new registry entitled "Roughtime Tag
 Registry".  Entries <span class="bcp14">SHALL</span> have the following fields:<a href="#section-13.3-1" class="pilcrow">¶</a></p>
 <p id="section-13.3-2">Tag (<span class="bcp14">REQUIRED</span>): A 32-bit unsigned integer in hexadecimal format.<a href="#section-13.3-2" class="pilcrow">¶</a></p>
-<p id="section-13.3-3">ASCII Representation (<span class="bcp14">OPTIONAL</span>): The ASCII representation of the tag
+<p id="section-13.3-3">ASCII Representation (<span class="bcp14">REQUIRED</span>): The ASCII representation of the tag
 in accordance with <a href="#type-tag" class="auto internal xref">Section 5.1.4</a> of this memo, if applicable.<a href="#section-13.3-3" class="pilcrow">¶</a></p>
 <p id="section-13.3-4">Reference (<span class="bcp14">REQUIRED</span>): A reference to a relevant specification
 document.<a href="#section-13.3-4" class="pilcrow">¶</a></p>

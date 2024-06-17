@@ -5,8 +5,8 @@
 Network Time Protocols                                           W. Ladd
 Internet-Draft                                       Akamai Technologies
 Intended status: Informational                               M. Dansarie
-Expires: 18 December 2024                                         Netnod
-                                                            16 June 2024
+Expires: 19 December 2024                                         Netnod
+                                                            17 June 2024
 
 
                                Roughtime
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 December 2024.
+   This Internet-Draft will expire on 19 December 2024.
 
 Copyright Notice
 
@@ -161,7 +161,7 @@ Table of Contents
    received at t_2, and with timestamp t_3 has been created between t_1
    and t_2.  If t_3 is not within that interval, a server inconsistency
    may be detected and used to impeach the server.  The propagation of
-   such a guarantee and its use of type synchronization is discussed in
+   such a guarantee and its use for time synchronization is discussed in
    Section 7.  No delay attacker may affect this: they may only expand
    the interval between t_1 and t_2, or of course stop the measurement
    in the first place.
@@ -227,10 +227,11 @@ Table of Contents
 5.1.4.  Tag
 
    Tags are used to identify values in Roughtime messages.  A tag is a
-   uint32 but may also be listed in this document as a sequence of up to
-   four ASCII characters [RFC20].  ASCII strings shorter than four
-   characters can be unambiguously converted to tags by padding them
-   with zero bytes.  For example, the ASCII string "NONC" would
+   uint32 but can also be represented as a sequence of up to four ASCII
+   characters [RFC20].  ASCII strings shorter than four characters can
+   be unambiguously converted to tags by padding them with zero bytes.
+   Tags MUST NOT contain any other bytes than capital letters (A-Z) or
+   padding zero bytes.  For example, the ASCII string "NONC" would
    correspond to the tag 0x434e4f4e and "ZZZZ" would correspond to
    0x5a5a5a5a.  Note that when encoded into a message the ASCII values
    will be in the natural bytewise order.
@@ -695,7 +696,7 @@ Table of Contents
 
    Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.
 
-   ASCII Representation (OPTIONAL): The ASCII representation of the tag
+   ASCII Representation (REQUIRED): The ASCII representation of the tag
    in accordance with Section 5.1.4 of this memo, if applicable.
 
    Reference (REQUIRED): A reference to a relevant specification
