@@ -94,8 +94,8 @@ t<sub>1</sub>, received at t<sub>2</sub>, and with timestamp
 t<sub>3</sub> has been created between t<sub>1</sub> and
 t<sub>2</sub>. If t<sub>3</sub> is not within that interval, a server
 inconsistency may be detected and used to impeach the server. The
-propagation of such a guarantee and its use of type synchronization is
-discussed in {{integration-into-ntp}}. No delay attacker may affect
+propagation of such a guarantee and its use for time synchronization
+is discussed in {{integration-into-ntp}}. No delay attacker may affect
 this: they may only expand the interval between t<sub>1</sub> and
 t<sub>2</sub>, or of course stop the measurement in the first place.
 
@@ -161,13 +161,14 @@ significant byte first.
 ### Tag {#type-tag}
 
 Tags are used to identify values in Roughtime messages. A tag is a
-uint32 but may also be listed in this document as a sequence of up to
-four ASCII characters {{!RFC20}}. ASCII strings shorter than four
-characters can be unambiguously converted to tags by padding them with
-zero bytes. For example, the ASCII string "NONC" would correspond to
-the tag 0x434e4f4e and "ZZZZ" would correspond to 0x5a5a5a5a. Note
-that when encoded into a message the ASCII values will be in the
-natural bytewise order.
+uint32 but can also be represented as a sequence of up to four ASCII
+characters {{!RFC20}}. ASCII strings shorter than four characters can
+be unambiguously converted to tags by padding them with zero bytes.
+Tags MUST NOT contain any other bytes than capital letters (A-Z) or
+padding zero bytes. For example, the ASCII string "NONC" would
+correspond to the tag 0x434e4f4e and "ZZZZ" would correspond to
+0x5a5a5a5a. Note that when encoded into a message the ASCII values
+will be in the natural bytewise order.
 
 ### Timestamp
 
@@ -619,7 +620,7 @@ Registry".  Entries SHALL have the following fields:
 
 Tag (REQUIRED): A 32-bit unsigned integer in hexadecimal format.
 
-ASCII Representation (OPTIONAL): The ASCII representation of the tag
+ASCII Representation (REQUIRED): The ASCII representation of the tag
 in accordance with {{type-tag}} of this memo, if applicable.
 
 Reference (REQUIRED): A reference to a relevant specification
