@@ -1,6 +1,8 @@
 # Roughtime
 
-This is the working area for the IETF [NTP Working Group](https://datatracker.ietf.org/wg/ntp/documents/) Internet-Draft, "Roughtime".
+This was the working area for the IETF [NTP Working Group](https://datatracker.ietf.org/wg/ntp/documents/) Internet-Draft, "Roughtime".
+
+The draft now lives at a [NTP WG repo](https://github.com/ietf-wg-ntp/draft-roughtime)
 
 * [Editor's Copy](https://wbl.github.io/roughtime-draft/#go.draft-ietf-ntp-roughtime.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-ntp-roughtime)
